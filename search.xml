@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Spring5注解编程基础组件介绍</title>
+      <link href="/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/"/>
+      <url>/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/</url>
+      
+        <content type="html"><![CDATA[<h2><span id="1-配置组件">1、配置组件</span></h2><a id="more"></a><table><thead><tr><th>注解名称</th><th>说明</th></tr></thead><tbody><tr><td>@Configuration</td><td>把一个类作为一个 IoC 容器，它的某个方法头上如果注册了 @Bean,就会作为这个 Spring 容器中的 Bean。</td></tr><tr><td>@ComponentScan</td><td>在配置类上添加 @ComponentScan 注解。该注解默认会扫描该类所在的包下的所有的配置类，相当于之前的&lt;context:component-scan&gt;</td></tr><tr><td>@Scope</td><td>用于指定scope作用域的（用在类上）</td></tr><tr><td>@Lazy</td><td>表示延时初始化</td></tr><tr><td>@Conditional</td><td>Spring4开始提供，它的作用是按照一定的条件进行判断，满足条件给容器注册Bean</td></tr><tr><td>@Import</td><td>导入外部资源</td></tr><tr><td>生命周期控制</td><td>@PostConstruct用于指定初始化方法（用在方法上）<br>@PreDestory用于指定销毁方法（用在方法上）<br>@DependsOn:定义Bean初始化及销毁时的顺序</td></tr></tbody></table><h2><span id="赋值自动装配组件">赋值（自动装配）组件</span></h2><table><thead><tr><th>注解名称</th><th>说明</th></tr></thead><tbody><tr><td>@Component</td><td>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</td></tr><tr><td>@Service</td><td>用于标注业务层组件</td></tr><tr><td>@Controller</td><td>用于标注控制层组件</td></tr><tr><td>@Repository</td><td>用于标注数据访问组件，即DAO组件。</td></tr><tr><td>@Value</td><td>普通数据类型赋值</td></tr><tr><td>@Autowired</td><td>默认按类型装配，如果我们想按名称装配，可以结合@Qualifier注解一起使用</td></tr><tr><td>@PropertySource</td><td>读取配置文件赋值</td></tr><tr><td>@Qualifier</td><td>如存在多个实例配合使用</td></tr><tr><td>@Primary</td><td>自动装配时当出现了多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常</td></tr><tr><td>@Resource</td><td>默认按名称装配，当找不到与名称匹配的bean才会按类型装配</td></tr></tbody></table><h2><span id="织入组件">织入组件</span></h2><table><thead><tr><th>注解名称</th><th>说明</th></tr></thead><tbody><tr><td>ApplicationContextAware</td><td>可以通过这个上下文环境对象得到Spring容器中的Bean</td></tr><tr><td>BeanDefinitionRegistryPostProcessor</td><td>BeanDefinitionRegistryPostProcessor实现了BeanFactoryPostProcessor接口，是Spring框架的BeanDefinitionRegistry的后外理器，用来注册额外的BeanDefinition</td></tr></tbody></table><h2><span id="切面组件">切面组件</span></h2><table><thead><tr><th>注解名称</th><th>说明</th></tr></thead><tbody><tr><td>@EnableTransactionManagement</td><td>添加对事务管理的支持</td></tr><tr><td>@Ttranscational</td><td>配置声明式事务信息</td></tr></tbody></table><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+          <category> Spring5注解编程基础组件介绍 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spring源码学习</title>
+      <link href="/2020/04/08/spring-yuan-ma-xue-xi/"/>
+      <url>/2020/04/08/spring-yuan-ma-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<h2><span id="咕泡学院-spring源码学习">咕泡学院-Spring源码学习</span></h2><a id="more"></a><ul><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/Sping%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/01_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91Spring%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F%E4%B8%8ESpring%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3.pdf" target="_blank" rel="noopener">Spring前世今生与Spring编程思想</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/Sping%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/02_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%94%A8300%E8%A1%8C%E4%BB%A3%E7%A0%81%E6%89%8B%E5%86%99%E5%88%9D%E4%BD%93%E9%AA%8CSpring+V1.0%E7%89%88%E6%9C%AC.pdf" target="_blank" rel="noopener">用300行代码手写初体验Spring+V1.0版本</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/Sping%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/03_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%94%A830%E4%B8%AA%E7%B1%BB%E6%89%8B%E5%86%99Spring+V2.0%E7%89%88%E6%9C%AC%E4%B9%8B%E9%A1%B6%E5%B1%82%E8%AE%BE%E8%AE%A1IOC%E4%B8%8EDI.pdf" target="_blank" rel="noopener">用30个类手写Spring+V2.0版本之顶层设计IOC与DI</a></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 咕泡学院 </category>
+          
+          <category> Spring源码学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring源码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JVM升华篇</title>
+      <link href="/2020/04/07/jvm-sheng-hua-pian/"/>
+      <url>/2020/04/07/jvm-sheng-hua-pian/</url>
+      
+        <content type="html"><![CDATA[<h1><span id="garbage-collect垃圾回收">Garbage Collect(垃圾回收)</span></h1><a id="more"></a><h2><span id="何为垃圾">何为垃圾：</span></h2><h3><span id="如何确定一个对象是垃圾">如何确定一个对象是垃圾？</span></h3><ol><li><p>引用计数法：</p><p>对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。</p><p>弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A,B也是垃圾，但如果用引用计数法，则无法判断它们是垃圾。</p></li><li><p>可达性分析：</p><p>通过GC Root对象，开始向下寻找，看某个对象是否可达  。这里的GC Root (上帝视角），个人理解就是引用的根节点对象，就像一个菜单树一样，通过根节点，就可以向下找到所有的子节点。</p><blockquote><p>什么样的对象可以是GC Root？</p><ul><li>虚拟机栈中的本地变量表</li><li>static成员</li><li>常量引用</li><li>本地方法栈中的变量</li><li>类加载器</li><li>Thread 等</li></ul></blockquote></li></ol><p>堆文件：<br>    heap.hprof</p><h2><span id="回收算法">回收算法：</span></h2><pre><code>(1)标记和清除    标记    清除    问题：        a、空间碎片，内存不连续        b、标记和清除都比较耗时，效率还是比较低的(2)复制算法    弊端：空间浪费    优势：空间连续(3)标记整理</code></pre><h2><span id="把算法进行落地gt垃圾回收器">把算法进行落地–&gt;垃圾回收器</span></h2><pre><code>多线程/单线程 新生代：复制算法（适用于少量对象存活的场景）    对应垃圾收集器：到底用的是什么样的垃圾回收算法    Serial、ParNew、Parallel Scavenge(更加关注“吞吐量”)    吞吐量=用户业务代码执行的时间/（用户业务代码执行的时间+垃圾收集的时间）老年代：标记-清除/整理    CMS、Serial Old、Parallel Old CMS\G1:    并发：用户和垃圾 线程一起跑    并行：垃圾回收线程之间并行执行    CMS:Concurrent Mark Sweep 并发类的垃圾收集器 【用户线程和垃圾线程一起执行】        比较关注的是停顿时间--降低了对吞吐量的要求        初始标记（用一个线程跑） 并发标记 重新标记（多线程增量标记） 并发清理    G1:Garbage First         有高吞吐量的同时，尽量小的停顿时间        初始标记 并发标记 最终标记 筛选回收（有选择性地回收）        Region 区域 对难重新进行了布局，逻辑存在Young Old ,但物理上已经不是隔离的了</code></pre><p>JVM调优<br>    （1）GC日志：停顿时间和吞吐量<br>        停顿时间：垃圾收集器进行垃圾回收client执行相应的时间–&gt;很好的体验–&gt;和用户<br>        吞吐量：运行用户代码时间/（运行用户代码时间+ 垃圾收集时间）：用户代码执行占用CPU资源的时间比较大，跑任务，运算的任务</p><pre><code>停顿时间小：CMS、G1 适用于Web应用 --&gt;并发类的收集器--&gt;极致：干脆没有停顿时间吞吐量优先：Parallel Scanvent Parallel Old --&gt;并行类的收集器串行收集：Serial 和 Serial old --&gt;内存比较小，嵌入式的设备（2）内存使用的维度</code></pre><p>jps -l<br>jinfo -flag Use</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+          <category> JVM升华篇 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JVM </tag>
+            
+            <tag> Garbage Collect(垃圾回收) </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>设计模式学习</title>
+      <link href="/2020/04/07/she-ji-mo-shi-xue-xi/"/>
+      <url>/2020/04/07/she-ji-mo-shi-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<h2><span id="咕泡学院-设计模式学习">咕泡学院-设计模式学习</span></h2><a id="more"></a><ul><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/01_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88%E5%8F%8A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">设计模式总览及工厂模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/02_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">单例模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/03_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">原型模式与建造者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/04_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.pdf" target="_blank" rel="noopener">深度分析代理模式</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/05_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">门面模式与装饰器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/06_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">享元模式与组合模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/07_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">适配器模式与桥接模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/08_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">委派模式与模板方法模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/09_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">策略模式与责任链模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/10_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">迭代器模式与命令模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/11_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">状态模式与备忘录模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/12_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">中介者模式与解释器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/13_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">观察者模式与访问者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/14_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AF%B9%E6%AF%94.pdf" target="_blank" rel="noopener">各设计模式总结与对比</a></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 咕泡学院 </category>
+          
+          <category> 设计模式学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

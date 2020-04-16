@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="设计模式学习, 飞天辰良">
+    <meta name="keywords" content="Spring加载XML配置到IOC容器方法调用时序, 飞天辰良">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>设计模式学习 | 飞天辰良</title>
+    <title>Spring加载XML配置到IOC容器方法调用时序 | 飞天辰良</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">设计模式学习</h1>
+                    <h1 class="description center-align post-title">Spring加载XML配置到IOC容器方法调用时序</h1>
                 </div>
             </div>
         </div>
@@ -375,8 +375,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                <span class="chip bg-color">设计模式</span>
+                            <a href="/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
                             </a>
                         
                     </div>
@@ -387,12 +387,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/" class="post-category">
-                                咕泡学院
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
                             </a>
                         
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                设计模式学习
+                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDXML%E9%85%8D%E7%BD%AE%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                Spring加载XML配置到IOC容器方法调用时序
                             </a>
                         
                     </div>
@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-07
+                    2020-04-14
                 </div>
                 
 
@@ -420,24 +420,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="咕泡学院-设计模式学习">咕泡学院-设计模式学习</span></h2><a id="more"></a>
+                <h2><span id="spring-加载-xml-配置到ioc容器-方法调用时序">Spring 加载 XML 配置到IOC容器 方法调用时序：</span></h2><a id="more"></a>
+<blockquote>
+<p>HttpServletBean.init()</p>
+<blockquote>
+<p>FrameworkServlet.initServletBean() –&gt; initWebApplicationContext() –&gt; createWebApplicationContext() –&gt; configureAndRefreshWebApplicationContext()</p>
+<blockquote>
+<p>AbstractApplicationContext.refresh() –&gt; obtainFreshBeanFactory ()</p>
+<blockquote>
+<p>AbstractRefreshableApplicationContext.refreshBeanFactory()</p>
+<blockquote>
+<p>XmlWebApplicationContext.loadBeanDefinitions() –&gt; loadBeanDefinitions()</p>
+<blockquote>
+<p>XmlBeanDefinitionReader.loadBeanDefinitions() –&gt; doLoadBeanDefinitions() –&gt; registerBeanDefinitions()</p>
+<blockquote>
+<p>DefaultBeanDefinitionDocumentReader.registerBeanDefinitions() –&gt; doRegisterBeanDefinitions() –&gt; parseBeanDefinitions() –&gt; parseDefaultElement()</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseDefaultElement</span><span class="params">(Element ele, BeanDefinitionParserDelegate delegate)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {</span><br><span class="line">        importBeanDefinitionResource(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {</span><br><span class="line">        processAliasRegistration(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {</span><br><span class="line">        processBeanDefinition(ele, delegate);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {</span><br><span class="line">        <span class="comment">// recurse</span></span><br><span class="line">        doRegisterBeanDefinitions(ele);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<ul>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/01_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88%E5%8F%8A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">设计模式总览及工厂模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/02_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">单例模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/03_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">原型模式与建造者模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/04_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.pdf" target="_blank" rel="noopener">深度分析代理模式</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/05_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">门面模式与装饰器模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/06_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">享元模式与组合模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/07_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">适配器模式与桥接模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/08_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">委派模式与模板方法模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/09_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">策略模式与责任链模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/10_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">迭代器模式与命令模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/11_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">状态模式与备忘录模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/12_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">中介者模式与解释器模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/13_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">观察者模式与访问者模式详解</a></li>
-<li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/14_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AF%B9%E6%AF%94.pdf" target="_blank" rel="noopener">各设计模式总结与对比</a></li>
-</ul>
+<p>最后的 parseDefaultElement 使用策略模式，解析具体的element。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -481,7 +488,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhao451966.github.io/2020/04/07/she-ji-mo-shi-xue-xi/">https://zhao451966.github.io/2020/04/07/she-ji-mo-shi-xue-xi/</a>
+                    <a href="https://zhao451966.github.io/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">https://zhao451966.github.io/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -519,8 +526,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                                    <span class="chip bg-color">设计模式</span>
+                                <a href="/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
                                 </a>
                             
                         </div>
@@ -688,58 +695,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/08/spring-yuan-ma-xue-xi/">
+                <a href="/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Spring源码学习">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring加载XML配置到IOC容器方法调用时序">
                         
-                        <span class="card-title">Spring源码学习</span>
+                        <span class="card-title">Spring加载XML配置到IOC容器方法调用时序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            咕泡学院-Spring源码学习
+                            Spring 加载 XML 配置到IOC容器 方法调用时序：
 
+HttpServletBean.init()
 
-Spring前世今生与Spring编程思想
-用300行代码手写初体验Spring+V1.0版本
-用30个类手写Spring+V2.0版本之顶层设计IOC与DI
-
-
-        document.que
+FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/" class="post-category">
-                                    咕泡学院
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Spring源码学习
+                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDXML%E9%85%8D%E7%BD%AE%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                    Spring加载XML配置到IOC容器方法调用时序
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring%E6%BA%90%E7%A0%81/">
-                        <span class="chip bg-color">Spring源码</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
@@ -753,40 +758,50 @@ Spring前世今生与Spring编程思想
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/07/jvm-sheng-hua-pian/">
+                <a href="/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JVM升华篇">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Spring5注解编程基础组件介绍">
                         
-                        <span class="card-title">JVM升华篇</span>
+                        <span class="card-title">Spring5注解编程基础组件介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Garbage Collect(垃圾回收)
+                            1、配置组件
 
-何为垃圾：如何确定一个对象是垃圾？
-引用计数法：
-对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。
-弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A
+
+
+
+注解名称
+说明
+
+
+
+@Configuration
+把一个类作为一个 IoC 容器，它的某个方法头上如果注册了 @Bean,就会作为这个 Spring 容器中的 Bean。
+
+
+@ComponentScan
+在配置类上
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JVM/" class="post-category">
-                                    JVM
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
-                            <a href="/categories/JVM/JVM%E5%8D%87%E5%8D%8E%E7%AF%87/" class="post-category">
-                                    JVM升华篇
+                            <a href="/categories/Spring/Spring5%E6%B3%A8%E8%A7%A3%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D/" class="post-category">
+                                    Spring5注解编程基础组件介绍
                                 </a>
                             
                             
@@ -796,12 +811,8 @@ Spring前世今生与Spring编程思想
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
-                    <a href="/tags/Garbage-Collect-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-                        <span class="chip bg-color">Garbage Collect(垃圾回收)</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>

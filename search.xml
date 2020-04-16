@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Spring加载XML配置到IOC容器方法调用时序</title>
+      <link href="/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/"/>
+      <url>/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/</url>
+      
+        <content type="html"><![CDATA[<h2><span id="spring-加载-xml-配置到ioc容器-方法调用时序">Spring 加载 XML 配置到IOC容器 方法调用时序：</span></h2><a id="more"></a><blockquote><p>HttpServletBean.init()</p><blockquote><p>FrameworkServlet.initServletBean() –&gt; initWebApplicationContext() –&gt; createWebApplicationContext() –&gt; configureAndRefreshWebApplicationContext()</p><blockquote><p>AbstractApplicationContext.refresh() –&gt; obtainFreshBeanFactory ()</p><blockquote><p>AbstractRefreshableApplicationContext.refreshBeanFactory()</p><blockquote><p>XmlWebApplicationContext.loadBeanDefinitions() –&gt; loadBeanDefinitions()</p><blockquote><p>XmlBeanDefinitionReader.loadBeanDefinitions() –&gt; doLoadBeanDefinitions() –&gt; registerBeanDefinitions()</p><blockquote><p>DefaultBeanDefinitionDocumentReader.registerBeanDefinitions() –&gt; doRegisterBeanDefinitions() –&gt; parseBeanDefinitions() –&gt; parseDefaultElement()</p></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote></blockquote><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseDefaultElement</span><span class="params">(Element ele, BeanDefinitionParserDelegate delegate)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {</span><br><span class="line">        importBeanDefinitionResource(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {</span><br><span class="line">        processAliasRegistration(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {</span><br><span class="line">        processBeanDefinition(ele, delegate);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {</span><br><span class="line">        <span class="comment">// recurse</span></span><br><span class="line">        doRegisterBeanDefinitions(ele);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p>最后的 parseDefaultElement 使用策略模式，解析具体的element。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+          <category> Spring加载XML配置到IOC容器方法调用时序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring5注解编程基础组件介绍</title>
       <link href="/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/"/>
       <url>/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/</url>
@@ -58,35 +85,6 @@
     
     
     <entry>
-      <title>JVM升华篇</title>
-      <link href="/2020/04/07/jvm-sheng-hua-pian/"/>
-      <url>/2020/04/07/jvm-sheng-hua-pian/</url>
-      
-        <content type="html"><![CDATA[<h1><span id="garbage-collect垃圾回收">Garbage Collect(垃圾回收)</span></h1><a id="more"></a><h2><span id="何为垃圾">何为垃圾：</span></h2><h3><span id="如何确定一个对象是垃圾">如何确定一个对象是垃圾？</span></h3><ol><li><p>引用计数法：</p><p>对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。</p><p>弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A,B也是垃圾，但如果用引用计数法，则无法判断它们是垃圾。</p></li><li><p>可达性分析：</p><p>通过GC Root对象，开始向下寻找，看某个对象是否可达  。这里的GC Root (上帝视角），个人理解就是引用的根节点对象，就像一个菜单树一样，通过根节点，就可以向下找到所有的子节点。</p><blockquote><p>什么样的对象可以是GC Root？</p><ul><li>虚拟机栈中的本地变量表</li><li>static成员</li><li>常量引用</li><li>本地方法栈中的变量</li><li>类加载器</li><li>Thread 等</li></ul></blockquote></li></ol><p>堆文件：<br>    heap.hprof</p><h2><span id="回收算法">回收算法：</span></h2><pre><code>(1)标记和清除    标记    清除    问题：        a、空间碎片，内存不连续        b、标记和清除都比较耗时，效率还是比较低的(2)复制算法    弊端：空间浪费    优势：空间连续(3)标记整理</code></pre><h2><span id="把算法进行落地gt垃圾回收器">把算法进行落地–&gt;垃圾回收器</span></h2><pre><code>多线程/单线程 新生代：复制算法（适用于少量对象存活的场景）    对应垃圾收集器：到底用的是什么样的垃圾回收算法    Serial、ParNew、Parallel Scavenge(更加关注“吞吐量”)    吞吐量=用户业务代码执行的时间/（用户业务代码执行的时间+垃圾收集的时间）老年代：标记-清除/整理    CMS、Serial Old、Parallel Old CMS\G1:    并发：用户和垃圾 线程一起跑    并行：垃圾回收线程之间并行执行    CMS:Concurrent Mark Sweep 并发类的垃圾收集器 【用户线程和垃圾线程一起执行】        比较关注的是停顿时间--降低了对吞吐量的要求        初始标记（用一个线程跑） 并发标记 重新标记（多线程增量标记） 并发清理    G1:Garbage First         有高吞吐量的同时，尽量小的停顿时间        初始标记 并发标记 最终标记 筛选回收（有选择性地回收）        Region 区域 对难重新进行了布局，逻辑存在Young Old ,但物理上已经不是隔离的了</code></pre><p>JVM调优<br>    （1）GC日志：停顿时间和吞吐量<br>        停顿时间：垃圾收集器进行垃圾回收client执行相应的时间–&gt;很好的体验–&gt;和用户<br>        吞吐量：运行用户代码时间/（运行用户代码时间+ 垃圾收集时间）：用户代码执行占用CPU资源的时间比较大，跑任务，运算的任务</p><pre><code>停顿时间小：CMS、G1 适用于Web应用 --&gt;并发类的收集器--&gt;极致：干脆没有停顿时间吞吐量优先：Parallel Scanvent Parallel Old --&gt;并行类的收集器串行收集：Serial 和 Serial old --&gt;内存比较小，嵌入式的设备（2）内存使用的维度</code></pre><p>jps -l<br>jinfo -flag Use</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> JVM </category>
-          
-          <category> JVM升华篇 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JVM </tag>
-            
-            <tag> Garbage Collect(垃圾回收) </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>设计模式学习</title>
       <link href="/2020/04/07/she-ji-mo-shi-xue-xi/"/>
       <url>/2020/04/07/she-ji-mo-shi-xue-xi/</url>
@@ -106,6 +104,35 @@
         <tags>
             
             <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JVM升华篇</title>
+      <link href="/2020/04/07/jvm-sheng-hua-pian/"/>
+      <url>/2020/04/07/jvm-sheng-hua-pian/</url>
+      
+        <content type="html"><![CDATA[<h1><span id="garbage-collect垃圾回收">Garbage Collect(垃圾回收)</span></h1><a id="more"></a><h2><span id="何为垃圾">何为垃圾：</span></h2><h3><span id="如何确定一个对象是垃圾">如何确定一个对象是垃圾？</span></h3><ol><li><p>引用计数法：</p><p>对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。</p><p>弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A,B也是垃圾，但如果用引用计数法，则无法判断它们是垃圾。</p></li><li><p>可达性分析：</p><p>通过GC Root对象，开始向下寻找，看某个对象是否可达  。这里的GC Root (上帝视角），个人理解就是引用的根节点对象，就像一个菜单树一样，通过根节点，就可以向下找到所有的子节点。</p><blockquote><p>什么样的对象可以是GC Root？</p><ul><li>虚拟机栈中的本地变量表</li><li>static成员</li><li>常量引用</li><li>本地方法栈中的变量</li><li>类加载器</li><li>Thread 等</li></ul></blockquote></li></ol><h2><span id="垃圾回收算法">垃圾回收算法：</span></h2><h3><span id="标记-清除mark-sweep">标记-清除（Mark-Sweep）</span></h3><ul><li><p>标记</p><p>找出内存中需要回收的对象，并把它们标记出来</p><blockquote><p>此时堆中所有的对象都会被扫描一遍，从而才能确定需要回收的对象，比较耗时。</p></blockquote><p><img src="https://i.loli.net/2020/04/08/V1hKBMo8OSpwiN4.jpg" alt="QQ截图20200408093356.jpg"></p></li></ul><ul><li><p>清除</p><p>清除掉被标记需要回收的对象，释放出对应的内存空间</p><p><img src="https://i.loli.net/2020/04/08/dIe72hczMiu4r8o.jpg" alt="QQ截图20200408093244.jpg"></p><p>缺点</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">标记清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。</span><br><span class="line">1.标记和清除两个过程都比较耗时，效率不高</span><br><span class="line">2.会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。</span><br></pre></td></tr></tbody></table></figure></li></ul><h3><span id="复制copying">复制（Copying）</span></h3><p>将内存划分成两块相等的区域，每次只使用其中一块，如下图所示：</p><p><img src="https://i.loli.net/2020/04/08/Qsa1dX378V6C2H9.jpg" alt="QQ截图20200408093314.jpg"></p><p>当其中一块内存使用完了，就将还存活的对象复制到另外一块上面，然后把已经使用过的内存空间一次性清除掉。</p><p><img src="https://i.loli.net/2020/04/08/HZnAu4pEP6VUSXc.jpg" alt="QQ截图20200408093333.jpg"></p><p>缺点：空间利用率降低。</p><h3><span id="标记-整理mark-compact">标记-整理（Mark-Compact）</span></h3><p>标记过程仍然与“标记-清除”算法一样，但是后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。</p><p><img src="https://i.loli.net/2020/04/08/V1hKBMo8OSpwiN4.jpg" alt="QQ截图20200408093356.jpg"></p><p>让所有存活的对象都向一端移动，清理掉边界以外的内存。</p><p><img src="https://i.loli.net/2020/04/08/JKIWv6TCErfPaSj.jpg" alt="QQ截图20200408093407.jpg"></p><h2><span id="分代收集算法">分代收集算法</span></h2><blockquote><p>既然上面介绍了3种垃圾收集算法，那么在堆内存中到底用哪一个呢？</p></blockquote><p>Young区：复制算法（对象在被分配之后，可能生命周期比较短，Young区复制效率比较高）</p><p>Old区：标记-清除、标记-整理（Old区对象存活时间比较长，复制来复制去没必要，不如做个标记再清理）</p><h2><span id="垃圾收集器">垃圾收集器</span></h2><blockquote><p>如果说收集器算法是内存回收的方法论，那么垃圾收集器就是内存回收的具体实现，说白了就是落地。</p></blockquote><p><img src="https://i.loli.net/2020/04/08/hlEaNArspbQiPUM.jpg" alt="QQ截图20200408093426.jpg"></p><h3><span id="serial收集器">Serial收集器</span></h3><p>Serial收集器是最基本、发展历史最悠久的收集器，曾经（在JDK1.3.1之前）是虚拟机新生代收集的唯一选择。</p><p>它是一种单线程收集器，不仅仅意味着它只会使用一个CPU或者一条收集线程去完成垃圾收集工作，更重要的是其在进行垃圾收集的时候需要暂停其他线程。</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">优点：简单高效，拥有很高的单线程收集效率</span><br><span class="line">缺点：收集过程需要暂停所有线程</span><br><span class="line">算法：复制算法</span><br><span class="line">适用范围：新生代</span><br><span class="line">应用：Client模式下的默认新生代收集器</span><br></pre></td></tr></tbody></table></figure><p><img src="https://i.loli.net/2020/04/08/f4d6lO7IGPnowYU.jpg" alt="QQ截图20200408093449.jpg"></p><h3><span id="parnew收集器">ParNew收集器</span></h3><p>可以把这个收集器理解为Serial收集器的多线程版本。</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">优点：在多CPU时，比Serial效率高。</span><br><span class="line">缺点：收集过程暂停所有应用程序线程，单CPU时比Serial效率差。</span><br><span class="line">算法：复制算法</span><br><span class="line">适用范围：新生代</span><br><span class="line">应用：运行在Server模式下的虚拟机中首选的新生代收集器</span><br></pre></td></tr></tbody></table></figure><p><img src="https://i.loli.net/2020/04/08/bExoILRW47shVpH.jpg" alt="QQ截图20200408093515.jpg"></p><h3><span id="parallel-scavenge收集器">Parallel Scavenge收集器</span></h3><p>Parallel Scavenge收集器是一个新生代收集器，它也是使用复制算法的收集器，又是并行的多线程收集器，看上去和ParNew一样，但是ParallelScavenge更关注<strong><em>系统的吞吐量</em></strong>。</p><blockquote><p>吞吐量=运行用户代码的时间/（运行用户代码的时间+垃圾收集时间）</p><p>比如虚拟机总共运行了100分钟，垃圾收集时间用了1分钟，吞吐量=（100-1）/100=99%</p><p>若吞吐量越大，意味着垃圾收集的时间越短，则用户代码可以充分利用CPU资源，尽快完成程序的运算任务。</p></blockquote><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--XX:MAXGCPuauseMillis控制最大的垃圾收集停顿时间。</span><br><span class="line">--XX:GCTimeRatio直接设置吞吐量的大小。</span><br></pre></td></tr></tbody></table></figure><h3><span id="serial-old收集器">Serial Old收集器</span></h3><p>Serial Old收集器是Serial收集器的老年代版本，也是一个单线程收集器，不同的是采用“标记-整理法”，运行过程和Serial收集器一样。</p><p><img src="https://i.loli.net/2020/04/08/8435ulwcrxMIePT.jpg" alt="QQ截图20200408093528.jpg"></p><h3><span id="parallel-old收集器">Parallel Old收集器</span></h3><p>Parallel Old收集器是Parallel Scavenge收集器的老年代版本，使用多线程和“标记-整理算法”进行垃圾回收。</p><p><strong><em>吞吐量优先</em></strong></p><h3><span id="cms收集器">CMS收集器</span></h3><p>CMS(Concurrent Mark Sweep)收集器是一种以获取<strong><em>最短回收停顿时间</em></strong>为目标的收集器。</p><p>采用的是“标记-清除算法”，整个过程分为4步</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.初始标记 CMS initial mark 标记GC Roots能关联到的对象 Stop The World--&gt;速度很快</span><br><span class="line">2.并发标记 CMS concurrent mark 进行GC Roots Tracking</span><br><span class="line">3.重新标记 CMS remark 修改并发标记因用户程序变动的内容Stop The World</span><br><span class="line">4.并发清除 CMS concurrent sweep</span><br></pre></td></tr></tbody></table></figure><blockquote><p>由于整个过程中，并发标记和并发清除，收集器线程可以与用户线程一起工作，所以总体上来说，CMS收集器的内存回收过程是与用户线程一起并发执行的。</p></blockquote><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">优点：并发收集、低停顿</span><br><span class="line">缺点：产生大量空间碎片、并发阶段会降低吞吐量</span><br></pre></td></tr></tbody></table></figure><p><img src="https://i.loli.net/2020/04/08/rOmbwLZuMiv63jH.jpg" alt="QQ截图20200408093541.jpg"></p><h3><span id="g1收集器">G1收集器</span></h3><p>G1特点</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">并行与并发</span><br><span class="line">分代收集（仍然保留了分代的概念）</span><br><span class="line">空间整合（整体上属于“标记-整理”算法，不会导致这僮碎片）</span><br><span class="line">可预测的停顿（比CMS更先进的地方在于能让使用者明确指定一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒）</span><br></pre></td></tr></tbody></table></figure><blockquote><p>使用G1收集器时，Java堆的内存布局与其他收集器有很大差别，它将整个Java堆划分为多个大小相等的独立区域（Region）,虽然还保留有新生代和老年代的概念，但新生代和老年代不再是物理隔离的了，它们都是一部分Region（不需要连续）的集合。</p></blockquote><p>工作过程可以分为如下几步</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">初始标记（Initial Marking） 标记一下GC Roots能够关联的对象，并且修改TAMS的值，需要暂停用户线程</span><br><span class="line">并发标记（Concurrent Marking） 从GC Roots进行可达性分析，找出存活的对象，与用户线程并发执行</span><br><span class="line">最终标记（Final Marking） 修正在并发标记阶段因为用户程序的并发执行导致变动的数据，需暂停用户线程</span><br><span class="line">筛选回收（Live Data Counting and Evacuation） 对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间制度回收计划</span><br></pre></td></tr></tbody></table></figure><p><img src="https://i.loli.net/2020/04/08/4djyBHMPKu8a1f3.jpg" alt="QQ截图20200408093556.jpg"></p><h3><span id="垃圾收集器分类">垃圾收集器分类</span></h3><ul><li>串行收集器–&gt;Serial和Serial Old</li></ul><p>只能有一个垃圾回收线程执行，用户线程暂停。<strong><em>适用于内存比较小的嵌入式设备</em></strong>。</p><ul><li>并行收集器【吞吐量优先】–&gt;Parallel Scavenge、Parallel Old</li></ul><p>多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态。<strong><em>适用于科学计算、后台处理等交互场景</em></strong>。</p><ul><li>并发收集器【停顿时间优先】–&gt;CMS、G1</li></ul><p>用户线程和垃圾收集线程同时执行（但并不一 定是并行的，可能是交替执行的），垃圾收集线程在执行的时候不会停顿用户线程的运行。<strong><em>适用于相对时间有要求的场景，比如web</em></strong>。</p><h3><span id="理解吞吐量和停顿时间">理解吞吐量和停顿时间</span></h3><ul><li>停顿时间–&gt;垃圾收集器进行垃圾回收终端应用执行响应的时间</li><li>吞吐量–&gt;运行用户代码时间/ (运行用户代码时间+垃圾收集时间)</li></ul><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">停顿时间越短就越适合需要和用户交互的程序，良好的响应速度能提升用户体验；</span><br><span class="line">高吞吐量则可以高效地利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。</span><br></pre></td></tr></tbody></table></figure><p><strong><em>小结</em></strong>：这两个指标也是评价垃圾回收器好坏的标准，其实调优也就是在观察这两个变量。</p><h3><span id="如何选择合适的垃圾收集器">如何选择合适的垃圾收集器</span></h3><p>官网：<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/collectors.html#sthref28" target="_blank" rel="noopener">http://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/collectors.html#sthref28</a></p><ul><li>优先调整堆的大小让服务器自己来选择</li><li>如果内存小于100M,使用串行收集器</li><li>如是是单核，并且没有停顿时间要求，使用串行或JVM自己选</li><li>如果允许停顿时间超过1秒，选择并行或JVM自己选</li><li>如果响应时间最重要，并且不能超过1秒，使用并发收集器</li></ul><h3><span id="再次理解g1">再次理解G1</span></h3><blockquote><p> JDK 7开始使用，JDK 8非常成熟，JDK 9 默认的增垃圾收集器，适用于新老生代。</p></blockquote><p>判断是否需要使用G1收集器？</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.50%以上的堆被存活对象占用</span><br><span class="line">2.对象分配和晋升的速度变化非常大</span><br><span class="line">3.垃圾回收时间比较长</span><br></pre></td></tr></tbody></table></figure><h3><span id="如何开启需要的垃圾收集器">如何开启需要的垃圾收集器</span></h3><ol><li><p>串行</p><p>–XX:+UserSerialGC</p><p>–XX:+UserSerialoldGC</p></li><li><p>并行（吞吐量优先）</p><p>–XX:+UseParallelGC</p><p>–XX:+UseParalleloldGC</p></li><li><p>并发（响应时间优先）</p><p>–XX:+UseConcMarkSweepGC</p><p>–XX:+UseG1GC</p></li></ol><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> JVM </category>
+          
+          <category> JVM升华篇 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JVM </tag>
+            
+            <tag> Garbage Collect(垃圾回收) </tag>
             
         </tags>
       

@@ -92,10 +92,10 @@ hr {
 }
 
 blockquote {
-    border-left: 5px solid #c993b7;
+    border-left: 5px solid #42b983;
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
-    background-color: rgba(167, 26, 191, 0.12);
+    background-color: rgba(66, 185, 131, .1);
 }
 
 .line-numbers-rows {
@@ -118,6 +118,7 @@ pre {
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;
+    color: #FFFFFF;
 }
 
 .code-area::after {
@@ -172,7 +173,7 @@ code {
     z-index: 1;
     filter: invert(50%);
     cursor: pointer;
-} 
+}
 
 .code-expand {
     position: absolute;
@@ -241,6 +242,8 @@ mark {
 
 .card .card-image img {
     border-radius: 8px 8px 0 0;
+    /* 修改文章列表图片填充样式为 cover 以覆盖整个区域而不会被缩放 */
+    object-fit: cover;
 }
 
 .container .row {
@@ -248,8 +251,15 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right,#5a95bf 0%,#13509d 100%);
-    /*background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);*/
+    background-image: linear-gradient(to right, #5a95bf 0%, #13509d 100%);
+}
+
+@-webkit-keyframes rainbow {
+    /* Dynamically switch background colors. */
+}
+
+@keyframes rainbow {
+    /* Dynamically switch background colors. */
 }
 
 .text-color {
@@ -265,7 +275,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #5a95bf 0%, #13509d 100%);
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
     opacity: 0.8;
 }
 
@@ -305,6 +315,11 @@ header .brand-logo .logo-img {
 
 header .brand-logo .logo-span {
     font-size: 2rem;
+}
+
+/*修改顶部 logo 的文字垂直对齐为 top，避免默认 middle 看起来偏下*/
+header .brand-logo .waves-effect {
+    vertical-align: top;
 }
 
 header .button-collapse i {
@@ -592,7 +607,9 @@ header .go-back i {
 }
 
 .bg-cover .post-title {
-    font-size: 3rem;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    font-weight: 400;
 }
 
 @-webkit-keyframes rainbow {
@@ -604,7 +621,7 @@ header .go-back i {
         background: -moz-linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
     }
-/*
+
     16% {
         background: rgba(132, 13, 121, 0.75);
         background: linear-gradient(45deg, rgba(132, 13, 121, 0.75) 0%, rgba(132, 13, 121, 0.65) 100%);
@@ -638,7 +655,7 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }*/
+    }
 }
 
 @keyframes rainbow {
@@ -651,7 +668,7 @@ header .go-back i {
         background: -webkit-linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
     }
 
-/*    16% {
+    16% {
         background: rgba(132, 13, 121, 0.75);
         background: linear-gradient(45deg, rgba(132, 13, 121, 0.75) 0%, rgba(132, 13, 121, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(132, 13, 121, 0.75) 0%, rgba(132, 13, 121, 0.65) 100%);
@@ -684,7 +701,7 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }*/
+    }
 }
 
 .index-card {
@@ -877,7 +894,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #c993b7;
+    color: #42b983;
     text-decoration: underline;
 }
 
@@ -1060,7 +1077,7 @@ article .article-tags .chip {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
-    color: #c993b7;
+    color: #42b983;
     background: #fff;
     border: 1px solid;
     transition: all 0.6s ease-in-out;
@@ -1068,17 +1085,17 @@ article .article-tags .chip {
 
 #artDetail .tag_share .article-tag .chip:hover {
     color: #fff;
-    background: #c993b7;
+    background: #42b983;
 }
 
 #artDetail .post-cate {
     float: right;
-    color: #c993b7;
+    color: #42b983;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #c993b7;
+    color: #42b983;
     font-weight: 500;
 }
 
@@ -1097,7 +1114,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #c993b7;
+    color: #42b983;
     text-decoration: underline;
 }
 
@@ -1116,66 +1133,6 @@ article .article-tags .chip {
 
 #artDetail .article-card-content {
     padding: 0 15px 20px 18px;
-}
-
-/*全局基础样式*/
-/*小屏幕下(手机类)的样式*/
-@media only screen and (max-width: 601px) {
-    .container {
-        width: 95%;
-    }
-    header .brand-logo .logo-span {
-        font-size: 1rem;
-    }
-    .bg-cover .title {
-        font-size: 3rem;
-        font-weight: 700;
-        line-height: 1.85em;
-        margin-bottom: 20px;
-        position: relative;
-    }
-}
-
-/*中等屏幕下(平板类)的样式*/
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-    .container {
-        width: 90%;
-    }
-    header .brand-logo .logo-span {
-        font-size: 2rem;
-    }
-    .bg-cover .title {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.85em;
-        margin-bottom: 20px;
-        position: relative;
-    }
-}
-/*大屏幕下(桌面类)的样式*/
-@media only screen and (min-width: 993px) {
-    .container {
-        width: 85%;
-        max-width: 1125px;
-    }
-
-    .post-container {
-        width: 90%;
-        margin: 0 auto;
-        max-width: 1250px;
-    }
-
-    header .brand-logo .logo-span {
-        font-size: 2rem;
-    }
-
-    .bg-cover .title {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1.85em;
-        margin-bottom: 20px;
-        position: relative;
-    }
 }
 
 @media only screen and (max-width: 601px) {
@@ -1217,7 +1174,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #c993b7;
+    color: #42b983;
     font-weight: 500;
 }
 
@@ -1233,7 +1190,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #c993b7;
+    color: #42b983;
     font-weight: 500;
     text-decoration: underline;
     word-wrap: break-word;
@@ -1357,6 +1314,7 @@ thead {
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
+    z-index: 0;
 }
 
 .chip-container .chip:hover {
@@ -1652,7 +1610,7 @@ thead {
 }
 
 .post-statis .statis .count a {
-    color: #c993b7;
+    color: #42b983;
 }
 
 .post-statis .statis .name {
@@ -1917,7 +1875,7 @@ footer .copy-right {
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #c993b7;
+    color: #42b983;
 }
 
 .search-result-list li {
@@ -2045,7 +2003,7 @@ footer .copy-right {
     /* absolute position */
     position: absolute;
     /* set position to right bottom corner of block */
-    right: 0;
+    right: 0.2em;
     bottom: 0;
 }
 
@@ -2060,7 +2018,8 @@ footer .copy-right {
     /* set width and height */
     width: 1em;
     height: 1em;
-    margin-top: 0.2em;
+    /* fix the problem of hidden failure */
+    margin-top: 0.4em;
     /* bg color = bg color under block */
     background: white;
 }

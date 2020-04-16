@@ -442,89 +442,42 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<pre><code class="java">private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
-    if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {
-        importBeanDefinitionResource(ele);
-    }
-    else if (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {
-        processAliasRegistration(ele);
-    }
-    else if (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {
-        processBeanDefinition(ele, delegate);
-    }
-    else if (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {
-        // recurse
-        doRegisterBeanDefinitions(ele);
-    }
-}</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">parseDefaultElement</span><span class="params">(Element ele, BeanDefinitionParserDelegate delegate)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {</span><br><span class="line">        importBeanDefinitionResource(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {</span><br><span class="line">        processAliasRegistration(ele);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {</span><br><span class="line">        processBeanDefinition(ele, delegate);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {</span><br><span class="line">        <span class="comment">// recurse</span></span><br><span class="line">        doRegisterBeanDefinitions(ele);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <p>最后的 parseDefaultElement 使用策略模式，解析具体的element。</p>
 <h2><span id="ioc运行时序图">IOC运行时序图</span></h2><p><img src="https://i.loli.net/2020/04/16/wZSCUMEqoas8Kz7.png" alt="Spring 5 IOC运行时序图.png"></p>
 <p> spring 的IOC初始化过程，还是比较复杂的。里面比较重点的是IOC容器（BeanFactory）对象的在初始化过程中的传递：</p>
 <ul>
 <li>首先会在 AbstractRefreshableApplicationContext .refreshBeanFactory() 方法中调用createBeanFactory（）完成 IOC容器创建，并通 <code>this.beanFactory = beanFactory;</code>完成将IOC设置到ApplicattionContext 上下文中。</li>
 </ul>
-<pre><code class="java">    @Override
-    protected final void refreshBeanFactory() throws BeansException {
-        //如果已经有容器，销毁容器中的bean，关闭容器
-        if (hasBeanFactory()) {
-            destroyBeans();
-            closeBeanFactory();
-        }
-        try {
-            //创建IOC容器
-            DefaultListableBeanFactory beanFactory = createBeanFactory();
-            beanFactory.setSerializationId(getId());
-            //对IOC容器进行定制化，如设置启动参数，开启注解的自动装配等
-            customizeBeanFactory(beanFactory);
-            //调用载入Bean定义的方法，主要这里又使用了一个委派模式，在当前类中只定义了抽象的loadBeanDefinitions方法，具体的实现调用子类容器
-            loadBeanDefinitions(beanFactory);
-            synchronized (this.beanFactoryMonitor) {
-                this.beanFactory = beanFactory;
-            }
-        }
-        catch (IOException ex) {
-            throw new ApplicationContextException("I/O error parsing bean definition source for " + getDisplayName(), ex);
-        }
-    }</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">refreshBeanFactory</span><span class="params">()</span> <span class="keyword">throws</span> BeansException </span>{</span><br><span class="line">	<span class="comment">//如果已经有容器，销毁容器中的bean，关闭容器</span></span><br><span class="line">	<span class="keyword">if</span> (hasBeanFactory()) {</span><br><span class="line">		destroyBeans();</span><br><span class="line">		closeBeanFactory();</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">try</span> {</span><br><span class="line">		<span class="comment">//创建IOC容器</span></span><br><span class="line">		DefaultListableBeanFactory beanFactory = createBeanFactory();</span><br><span class="line">		beanFactory.setSerializationId(getId());</span><br><span class="line">		<span class="comment">//对IOC容器进行定制化，如设置启动参数，开启注解的自动装配等</span></span><br><span class="line">		customizeBeanFactory(beanFactory);</span><br><span class="line">		<span class="comment">//调用载入Bean定义的方法，主要这里又使用了一个委派模式，在当前类中只定义了抽象的loadBeanDefinitions方法，具体的实现调用子类容器</span></span><br><span class="line">		loadBeanDefinitions(beanFactory);</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>.beanFactoryMonitor) {</span><br><span class="line">			<span class="keyword">this</span>.beanFactory = beanFactory;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">catch</span> (IOException ex) {</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> ApplicationContextException(<span class="string">"I/O error parsing bean definition source for "</span> + getDisplayName(), ex);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <ul>
 <li>接着通过 loadBeanDefinitions 方法，将 beanFactory 传递到 AbstractXmlApplicationContext 中，AbstractXmlApplicationContext 反手就创建了 XmlBeanDefinitionReader 对象，并将 beanFactory 给了它：</li>
 </ul>
-<pre><code class="java">//创建XmlBeanDefinitionReader，即创建Bean读取器，并通过回调设置到容器中去，容  器使用该读取器读取Bean定义资源
-XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建XmlBeanDefinitionReader，即创建Bean读取器，并通过回调设置到容器中去，容  器使用该读取器读取Bean定义资源</span></span><br><span class="line">XmlBeanDefinitionReader beanDefinitionReader = <span class="keyword">new</span> XmlBeanDefinitionReader(beanFactory);</span><br></pre></td></tr></tbody></table></figure>
+
 <ul>
 <li>继续往下，XmlBeanDefinitionReader 按管了配置文件解析，但它并不是真正干活的对象，而是通过自身属性 documentReaderClass 指定的 Class：DefaultBeanDefinitionDocumentReader ,来创建了一个真正解析XML文件的委派对象：</li>
 </ul>
-<pre><code class="java">//创建BeanDefinitionDocumentReader对象，解析Document对象
-protected BeanDefinitionDocumentReader createBeanDefinitionDocumentReader() {
-   return BeanDefinitionDocumentReader.class.cast(BeanUtils.instantiateClass(this.documentReaderClass));
-}</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建BeanDefinitionDocumentReader对象，解析Document对象</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> BeanDefinitionDocumentReader <span class="title">createBeanDefinitionDocumentReader</span><span class="params">()</span> </span>{</span><br><span class="line">   <span class="keyword">return</span> BeanDefinitionDocumentReader<span class="class">.<span class="keyword">class</span>.<span class="title">cast</span>(<span class="title">BeanUtils</span>.<span class="title">instantiateClass</span>(<span class="title">this</span>.<span class="title">documentReaderClass</span>))</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <ul>
 <li>创建后 BeanDefinitionDocumentReader 对象后，XmlBeanDefinitionReader  又将自身注册成 BeanDefinitionDocumentReader 的 readerContext  属性中：</li>
 </ul>
-<pre><code class="java">//具体的解析实现过程有实现类DefaultBeanDefinitionDocumentReader完成
-documentReader.registerBeanDefinitions(doc, createReaderContext(resource));</code></pre>
-<pre><code class="java">//this 参数将 XmlBeanDefinitionReader 传给了 XmlReaderContext
-public XmlReaderContext createReaderContext(Resource resource) {
-   return new XmlReaderContext(resource, this.problemReporter, this.eventListener,
-         this.sourceExtractor, this, getNamespaceHandlerResolver());
-}</code></pre>
-<pre><code class="java">//根据Spring DTD对Bean的定义规则解析Bean定义Document对象
-@Override
-public void registerBeanDefinitions(Document doc, XmlReaderContext readerContext) {
-   //获得XML描述符
-   this.readerContext = readerContext;
-   logger.debug("Loading bean definitions");
-   //获得Document的根元素
-   Element root = doc.getDocumentElement();
-   doRegisterBeanDefinitions(root);
-}</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体的解析实现过程有实现类DefaultBeanDefinitionDocumentReader完成</span></span><br><span class="line">documentReader.registerBeanDefinitions(doc, createReaderContext(resource));</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//this 参数将 XmlBeanDefinitionReader 传给了 XmlReaderContext</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> XmlReaderContext <span class="title">createReaderContext</span><span class="params">(Resource resource)</span> </span>{</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> XmlReaderContext(resource, <span class="keyword">this</span>.problemReporter, <span class="keyword">this</span>.eventListener,</span><br><span class="line">         <span class="keyword">this</span>.sourceExtractor, <span class="keyword">this</span>, getNamespaceHandlerResolver());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据Spring DTD对Bean的定义规则解析Bean定义Document对象</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, XmlReaderContext readerContext)</span> </span>{</span><br><span class="line">   <span class="comment">//获得XML描述符</span></span><br><span class="line">   <span class="keyword">this</span>.readerContext = readerContext;</span><br><span class="line">   logger.debug(<span class="string">"Loading bean definitions"</span>);</span><br><span class="line">   <span class="comment">//获得Document的根元素</span></span><br><span class="line">   Element root = doc.getDocumentElement();</span><br><span class="line">   doRegisterBeanDefinitions(root);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
 <ul>
 <li>最后通 getReaderContext().getRegistry() 获取到 BeanFactory ,将 bdHolder 中包装 BeanDefinition 注册到BeanFactory 的 IOC 容器Map中：beanDefinitionMap</li>
 </ul>
-<pre><code class="java">//向Spring IOC容器注册解析得到的Bean定义，这是Bean定义向IOC容器注册的入口
-BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());</code></pre>
-<pre><code class="java">//向IOC容器注册BeanDefinition（这里的 registry 即是刚开始解析时创建的IOC容器DefaultListableBeanFactory ）
-registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向Spring IOC容器注册解析得到的Bean定义，这是Bean定义向IOC容器注册的入口</span></span><br><span class="line">BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向IOC容器注册BeanDefinition（这里的 registry 即是刚开始解析时创建的IOC容器DefaultListableBeanFactory ）</span></span><br><span class="line">registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());</span><br></pre></td></tr></tbody></table></figure>
+
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring5注解编程基础组件介绍, 飞天辰良">
+    <meta name="keywords" content="Spring,Spring IOC 时序图">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Spring5注解编程基础组件介绍 | 飞天辰良</title>
+    <title>Spring加载AnnotationConfig到IOC容器方法调用时序 | 飞天辰良</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring5注解编程基础组件介绍</h1>
+                    <h1 class="description center-align post-title">Spring加载AnnotationConfig到IOC容器方法调用时序</h1>
                 </div>
             </div>
         </div>
@@ -391,8 +391,8 @@
                                 Spring
                             </a>
                         
-                            <a href="/categories/Spring/Spring5%E6%B3%A8%E8%A7%A3%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D/" class="post-category">
-                                Spring5注解编程基础组件介绍
+                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDAnnotationConfig%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                Spring加载AnnotationConfig到IOC容器方法调用时序
                             </a>
                         
                     </div>
@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-13
+                    2020-04-17
                 </div>
                 
 
@@ -420,124 +420,38 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="1-配置组件">1、配置组件</span></h2><a id="more"></a>
+                <h1><span id="spring加载-annotationconfig-到ioc容器方法调用时序">Spring加载 AnnotationConfig 到IOC容器方法调用时序：</span></h1><p>Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfig</span> </span>{</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Person <span class="title">person</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person(<span class="string">"Jzhao"</span>,<span class="number">28</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Configuration</td>
-<td>把一个类作为一个 IoC 容器，它的某个方法头上如果注册了 @Bean,就会作为这个 Spring 容器中的 Bean。</td>
-</tr>
-<tr>
-<td>@ComponentScan</td>
-<td>在配置类上添加 @ComponentScan 注解。该注解默认会扫描该类所在的包下的所有的配置类，相当于之前的&lt;context:component-scan&gt;</td>
-</tr>
-<tr>
-<td>@Scope</td>
-<td>用于指定scope作用域的（用在类上）</td>
-</tr>
-<tr>
-<td>@Lazy</td>
-<td>表示延时初始化</td>
-</tr>
-<tr>
-<td>@Conditional</td>
-<td>Spring4开始提供，它的作用是按照一定的条件进行判断，满足条件给容器注册Bean</td>
-</tr>
-<tr>
-<td>@Import</td>
-<td>导入外部资源</td>
-</tr>
-<tr>
-<td>生命周期控制</td>
-<td>@PostConstruct用于指定初始化方法（用在方法上）<br>@PreDestory用于指定销毁方法（用在方法上）<br>@DependsOn:定义Bean初始化及销毁时的顺序</td>
-</tr>
-</tbody></table>
-<h2><span id="赋值自动装配组件">赋值（自动装配）组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Component</td>
-<td>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</td>
-</tr>
-<tr>
-<td>@Service</td>
-<td>用于标注业务层组件</td>
-</tr>
-<tr>
-<td>@Controller</td>
-<td>用于标注控制层组件</td>
-</tr>
-<tr>
-<td>@Repository</td>
-<td>用于标注数据访问组件，即DAO组件。</td>
-</tr>
-<tr>
-<td>@Value</td>
-<td>普通数据类型赋值</td>
-</tr>
-<tr>
-<td>@Autowired</td>
-<td>默认按类型装配，如果我们想按名称装配，可以结合@Qualifier注解一起使用</td>
-</tr>
-<tr>
-<td>@PropertySource</td>
-<td>读取配置文件赋值</td>
-</tr>
-<tr>
-<td>@Qualifier</td>
-<td>如存在多个实例配合使用</td>
-</tr>
-<tr>
-<td>@Primary</td>
-<td>自动装配时当出现了多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常</td>
-</tr>
-<tr>
-<td>@Resource</td>
-<td>默认按名称装配，当找不到与名称匹配的bean才会按类型装配</td>
-</tr>
-</tbody></table>
-<h2><span id="织入组件">织入组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ApplicationContextAware</td>
-<td>可以通过这个上下文环境对象得到Spring容器中的Bean</td>
-</tr>
-<tr>
-<td>BeanDefinitionRegistryPostProcessor</td>
-<td>BeanDefinitionRegistryPostProcessor实现了BeanFactoryPostProcessor接口，是Spring框架的BeanDefinitionRegistry的后外理器，用来注册额外的BeanDefinition</td>
-</tr>
-</tbody></table>
-<h2><span id="切面组件">切面组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@EnableTransactionManagement</td>
-<td>添加对事务管理的支持</td>
-</tr>
-<tr>
-<td>@Ttranscational</td>
-<td>配置声明式事务信息</td>
-</tr>
-</tbody></table>
+<p>然后简单地写个测试方法，通过 AnnotationConfigApplicationContext ，便可以将 MyConfig 中定义的 person 加载到 IOC 容器。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> </span>{</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>{</span><br><span class="line">        ApplicationContext app = <span class="keyword">new</span> AnnotationConfigApplicationContext(MyConfig<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Object bean = app.getBean(<span class="string">"person"</span>);</span><br><span class="line">        System.out.println(bean);</span><br><span class="line"></span><br><span class="line">        String [] beanNames = app.getBeanNamesForType(Person<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        System.out.println(Arrays.toString(beanNames));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2><span id="annotationconfig-加载到-ioc-运行时序图">AnnotationConfig 加载到 IOC 运行时序图</span></h2><p><img src="https://i.loli.net/2020/04/17/BGKwdfRTcHPMA7y.png" alt="Spring 通过 Annotaton 配置 Class加载 IOC 时序图 _1_.png"></p>
+<p>通过测试代码，我们大概能画出上面这个时序图。大概给它分成三个步骤：加载、注册、刷新。这里和 XML 加载有个很大不同的，就是XML，注册过程是放在刷新方法中的；而 Annotation 的方式，则是先注册 Bean 到 IOC，然后再刷新。</p>
+<h3><span id="加载">加载</span></h3><p>通过 AnnotationConfigApplicationContext(Class… annotatedClasses) 这个构造函数，这个构造函数中只有三个方法，this()、this.register()、this.refresh()。加载，这里面我们主要看下this()</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AnnotationConfigApplicationContext</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">this</span>.reader = <span class="keyword">new</span> AnnotatedBeanDefinitionReader(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.scanner = <span class="keyword">new</span> ClassPathBeanDefinitionScanner(<span class="keyword">this</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过 AnnotationConfigApplicationContext 构造方法，我们可以看出，AnnotationConfigApplicationContext 里面直接就放了一个 AnnotatedBeanDefinitionReader ，来用将 AnnotationConfig 解析成 BeanDefinition。</p>
+<h3><span id="注册">注册</span></h3><p>this.register() 方法中就调用加载步骤创建的AnnotatedBeanDefinitionReader，来进行注册操作。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为容器注册一个要被处理的注解Bean，新注册的Bean，必须手动调用容器的</span></span><br><span class="line"><span class="comment">//refresh()方法刷新容器，触发容器对新注册的Bean的处理</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Class&lt;?&gt;... annotatedClasses)</span> </span>{</span><br><span class="line">   Assert.notEmpty(annotatedClasses, <span class="string">"At least one annotated class must be specified"</span>);</span><br><span class="line">   <span class="keyword">this</span>.reader.register(annotatedClasses);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>  一步一步往下走，我们发现了doRegisterBean，这个真正干活的方法，该方法里面完成了BeanDefinition的创建，将前AnnotaionConfig中定义的属性设置到BeanDefinition，最后注册到IOC容器中。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Bean定义读取器向容器注册注解Bean定义类</span></span><br><span class="line">&lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">doRegisterBean</span><span class="params">(Class&lt;T&gt; annotatedClass, @Nullable Supplier&lt;T&gt; instanceSupplier, @Nullable String name,</span></span></span><br><span class="line"><span class="function"><span class="params">      @Nullable Class&lt;? extends Annotation&gt;[] qualifiers, BeanDefinitionCustomizer... definitionCustomizers)</span> </span>{</span><br><span class="line"></span><br><span class="line">   <span class="comment">//根据指定的注解Bean定义类，创建Spring容器中对注解Bean的封装的数据结构</span></span><br><span class="line">   AnnotatedGenericBeanDefinition abd = <span class="keyword">new</span> AnnotatedGenericBeanDefinition(annotatedClass);</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.conditionEvaluator.shouldSkip(abd.getMetadata())) {</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   abd.setInstanceSupplier(instanceSupplier);</span><br><span class="line">   <span class="comment">//解析注解Bean定义的作用域，若@Scope("prototype")，则Bean为原型类型；</span></span><br><span class="line">   <span class="comment">//若@Scope("singleton")，则Bean为单态类型</span></span><br><span class="line">   ScopeMetadata scopeMetadata = <span class="keyword">this</span>.scopeMetadataResolver.resolveScopeMetadata(abd);</span><br><span class="line">   <span class="comment">//为注解Bean定义设置作用域</span></span><br><span class="line">   abd.setScope(scopeMetadata.getScopeName());</span><br><span class="line">   <span class="comment">//为注解Bean定义生成Bean名称</span></span><br><span class="line">   String beanName = (name != <span class="keyword">null</span> ? name : <span class="keyword">this</span>.beanNameGenerator.generateBeanName(abd, <span class="keyword">this</span>.registry));</span><br><span class="line"></span><br><span class="line">   <span class="comment">//处理注解Bean定义中的通用注解</span></span><br><span class="line">   AnnotationConfigUtils.processCommonDefinitionAnnotations(abd);</span><br><span class="line">   <span class="comment">//如果在向容器注册注解Bean定义时，使用了额外的限定符注解，则解析限定符注解。</span></span><br><span class="line">   <span class="comment">//主要是配置的关于autowiring自动依赖注入装配的限定条件，即@Qualifier注解</span></span><br><span class="line">   <span class="comment">//Spring自动依赖注入装配默认是按类型装配，如果使用@Qualifier则按名称</span></span><br><span class="line">   <span class="keyword">if</span> (qualifiers != <span class="keyword">null</span>) {</span><br><span class="line">      <span class="keyword">for</span> (Class&lt;? extends Annotation&gt; qualifier : qualifiers) {</span><br><span class="line">         <span class="comment">//如果配置了@Primary注解，设置该Bean为autowiring自动依赖注入装//配时的首选</span></span><br><span class="line">         <span class="keyword">if</span> (Primary<span class="class">.<span class="keyword">class</span> </span>== qualifier) {</span><br><span class="line">            abd.setPrimary(<span class="keyword">true</span>);</span><br><span class="line">         }</span><br><span class="line">         <span class="comment">//如果配置了@Lazy注解，则设置该Bean为非延迟初始化，如果没有配置，</span></span><br><span class="line">         <span class="comment">//则该Bean为预实例化</span></span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (Lazy<span class="class">.<span class="keyword">class</span> </span>== qualifier) {</span><br><span class="line">            abd.setLazyInit(<span class="keyword">true</span>);</span><br><span class="line">         }</span><br><span class="line">         <span class="comment">//如果使用了除@Primary和@Lazy以外的其他注解，则为该Bean添加一</span></span><br><span class="line">         <span class="comment">//个autowiring自动依赖注入装配限定符，该Bean在进autowiring</span></span><br><span class="line">         <span class="comment">//自动依赖注入装配时，根据名称装配限定符指定的Bean</span></span><br><span class="line">         <span class="keyword">else</span> {</span><br><span class="line">            abd.addQualifier(<span class="keyword">new</span> AutowireCandidateQualifier(qualifier));</span><br><span class="line">         }</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">for</span> (BeanDefinitionCustomizer customizer : definitionCustomizers) {</span><br><span class="line">      customizer.customize(abd);</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">//创建一个指定Bean名称的Bean定义对象，封装注解Bean定义类数据</span></span><br><span class="line">   BeanDefinitionHolder definitionHolder = <span class="keyword">new</span> BeanDefinitionHolder(abd, beanName);</span><br><span class="line">   <span class="comment">//根据注解Bean定义类中配置的作用域，创建相应的代理对象</span></span><br><span class="line">   definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, <span class="keyword">this</span>.registry);</span><br><span class="line">   <span class="comment">//向IOC容器注册注解Bean类定义对象</span></span><br><span class="line">   BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, <span class="keyword">this</span>.registry);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3><span id="刷新">刷新</span></h3><p>通过this.refresh()，调用了父类AnnotationConfigApplicationContext 的 refresh 方法。这里我们就会想到通过 XML 配置文件进行 Bean 装载的时候，也调的这个方法，而这个方法里面才完成了 Bean 的注册。可是通过 AnnotationConfig 的方式，我们上面已经完成过注册了。我们可能会担心这个 refresh 方法，不会再来一次注册吧。下面，我们先到那个关键的 obtainFreshBeanFactory 里来看：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> ConfigurableListableBeanFactory <span class="title">obtainFreshBeanFactory</span><span class="params">()</span> </span>{</span><br><span class="line">   <span class="comment">//这里使用了委派设计模式，父类定义了抽象的refreshBeanFactory()方法，具体实现调用子类容器的refreshBeanFactory()方法</span></span><br><span class="line">   refreshBeanFactory();</span><br><span class="line">   ConfigurableListableBeanFactory beanFactory = getBeanFactory();</span><br><span class="line">   <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">      logger.debug(<span class="string">"Bean factory for "</span> + getDisplayName() + <span class="string">": "</span> + beanFactory);</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">return</span> beanFactory;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>refreshBeanFactory() 方法是委派给子类去实现的，这里我们发现，有两个子类：AbstractRefreshableApplicationContext、GenericApplicationContext 实现了这个方法：</p>
+<p><img src="https://i.loli.net/2020/04/17/smD4HS8Cvb7QqtJ.jpg" alt="111.jpg"></p>
+<p>AbstractRefreshableApplicationContext 我们知道，加载XML到IOC容器，就是用的它。而它的refreshBeanFactory 方法中，可以看出，一定会再创建一个IOC容器：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">refreshBeanFactory</span><span class="params">()</span> <span class="keyword">throws</span> BeansException </span>{</span><br><span class="line">   <span class="comment">//如果已经有容器，销毁容器中的bean，关闭容器</span></span><br><span class="line">   <span class="keyword">if</span> (hasBeanFactory()) {</span><br><span class="line">      destroyBeans();</span><br><span class="line">      closeBeanFactory();</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">try</span> {</span><br><span class="line">      <span class="comment">//创建IOC容器</span></span><br><span class="line">      DefaultListableBeanFactory beanFactory = createBeanFactory();</span><br><span class="line">      beanFactory.setSerializationId(getId());</span><br><span class="line">      <span class="comment">//对IOC容器进行定制化，如设置启动参数，开启注解的自动装配等</span></span><br><span class="line">      customizeBeanFactory(beanFactory);</span><br><span class="line">      <span class="comment">//调用载入Bean定义的方法，主要这里又使用了一个委派模式，在当前类中只定义了抽象的loadBeanDefinitions方法，具体的实现调用子类容器</span></span><br><span class="line">      loadBeanDefinitions(beanFactory);</span><br><span class="line">      <span class="keyword">synchronized</span> (<span class="keyword">this</span>.beanFactoryMonitor) {</span><br><span class="line">         <span class="keyword">this</span>.beanFactory = beanFactory;</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">catch</span> (IOException ex) {</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> ApplicationContextException(<span class="string">"I/O error parsing bean definition source for "</span> + getDisplavyName(), ex);</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>那么剩下的，就是 GenericApplicationContext ，我们再回去看看 AnnotationConfigApplicationContext 正好也是继承了 GenericApplicationContext ：</p>
+<p><img src="https://i.loli.net/2020/04/17/ebC3zcFd2mRDrjO.jpg" alt="222.jpg"></p>
+<p>回到 GenericApplicationContext 的 refreshBeanFactory 方法，仅仅只是给IOC容器设置了一个序列ID：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected final void refreshBeanFactory() throws IllegalStateException {</span><br><span class="line">   if (!this.refreshed.compareAndSet(false, true)) {</span><br><span class="line">      throw new IllegalStateException(</span><br><span class="line">            "GenericApplicationContext does not support multiple refresh attempts: just call 'refresh' once");</span><br><span class="line">   }</span><br><span class="line">   this.beanFactory.setSerializationId(getId());</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>至此，IOC容器刷新成功。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -581,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhao451966.github.io/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/">https://zhao451966.github.io/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/</a>
+                    <a href="https://zhao451966.github.io/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/">https://zhao451966.github.io/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -792,28 +706,29 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/14/spring-jia-zai-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
+                <a href="/2020/04/20/spring-shi-ru-he-jie-jue-xun-huan-yi-lan-de/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring加载XML配置到IOC容器方法调用时序">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Spring 是如何解决循环依懒的？">
                         
-                        <span class="card-title">Spring加载XML配置到IOC容器方法调用时序</span>
+                        <span class="card-title">Spring 是如何解决循环依懒的？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spring 加载 XML 配置到IOC容器 方法调用时序：
+                            什么是循环依懒？循环依懒，即依懒形成了一个循环，如：
 
-HttpServletBean.init()
+A依懒B，B依懒A
+A依懒B，B依懒C，C依懒A
 
-FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
+Spring 是如何解决的spring 只能解决单例的，并且属性是非构造方法参数注入（set注入）的循环依懒。原理，就是运用缓存，如
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-20
                         </span>
                         <span class="publish-author">
                             
@@ -823,8 +738,8 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                                     Spring
                                 </a>
                             
-                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDXML%E9%85%8D%E7%BD%AE%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
-                                    Spring加载XML配置到IOC容器方法调用时序
+                            <a href="/categories/Spring/Spring-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E6%87%92%E7%9A%84%EF%BC%9F/" class="post-category">
+                                    Spring 是如何解决循环依懒的？
                                 </a>
                             
                             
@@ -849,43 +764,39 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/08/spring-yuan-ma-xue-xi/">
+                <a href="/2020/04/14/spring-jia-zai-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Spring源码学习">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring加载XML配置到IOC容器方法调用时序">
                         
-                        <span class="card-title">Spring源码学习</span>
+                        <span class="card-title">Spring加载XML配置到IOC容器方法调用时序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            咕泡学院-Spring源码学习
+                            Spring 加载 XML 配置到IOC容器 方法调用时序：
 
+HttpServletBean.init()
 
-Spring前世今生与Spring编程思想
-用300行代码手写初体验Spring+V1.0版本
-用30个类手写Spring+V2.0版本之顶层设计IOC与DI
-
-
-        document.que
+FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/" class="post-category">
-                                    咕泡学院
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Spring源码学习
+                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDXML%E9%85%8D%E7%BD%AE%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                    Spring加载XML配置到IOC容器方法调用时序
                                 </a>
                             
                             
@@ -895,8 +806,8 @@ Spring前世今生与Spring编程思想
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring%E6%BA%90%E7%A0%81/">
-                        <span class="chip bg-color">Spring源码</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>

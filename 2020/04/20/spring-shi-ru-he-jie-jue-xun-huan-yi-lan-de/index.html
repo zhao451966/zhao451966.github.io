@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring5注解编程基础组件介绍, 飞天辰良">
+    <meta name="keywords" content="Spring,循环依懒的">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Spring5注解编程基础组件介绍 | 飞天辰良</title>
+    <title>Spring 是如何解决循环依懒的？ | 飞天辰良</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring5注解编程基础组件介绍</h1>
+                    <h1 class="description center-align post-title">Spring 是如何解决循环依懒的？</h1>
                 </div>
             </div>
         </div>
@@ -391,8 +391,8 @@
                                 Spring
                             </a>
                         
-                            <a href="/categories/Spring/Spring5%E6%B3%A8%E8%A7%A3%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D/" class="post-category">
-                                Spring5注解编程基础组件介绍
+                            <a href="/categories/Spring/Spring-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E6%87%92%E7%9A%84%EF%BC%9F/" class="post-category">
+                                Spring 是如何解决循环依懒的？
                             </a>
                         
                     </div>
@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-13
+                    2020-04-20
                 </div>
                 
 
@@ -420,124 +420,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2><span id="1-配置组件">1、配置组件</span></h2><a id="more"></a>
-
-<table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Configuration</td>
-<td>把一个类作为一个 IoC 容器，它的某个方法头上如果注册了 @Bean,就会作为这个 Spring 容器中的 Bean。</td>
-</tr>
-<tr>
-<td>@ComponentScan</td>
-<td>在配置类上添加 @ComponentScan 注解。该注解默认会扫描该类所在的包下的所有的配置类，相当于之前的&lt;context:component-scan&gt;</td>
-</tr>
-<tr>
-<td>@Scope</td>
-<td>用于指定scope作用域的（用在类上）</td>
-</tr>
-<tr>
-<td>@Lazy</td>
-<td>表示延时初始化</td>
-</tr>
-<tr>
-<td>@Conditional</td>
-<td>Spring4开始提供，它的作用是按照一定的条件进行判断，满足条件给容器注册Bean</td>
-</tr>
-<tr>
-<td>@Import</td>
-<td>导入外部资源</td>
-</tr>
-<tr>
-<td>生命周期控制</td>
-<td>@PostConstruct用于指定初始化方法（用在方法上）<br>@PreDestory用于指定销毁方法（用在方法上）<br>@DependsOn:定义Bean初始化及销毁时的顺序</td>
-</tr>
-</tbody></table>
-<h2><span id="赋值自动装配组件">赋值（自动装配）组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Component</td>
-<td>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</td>
-</tr>
-<tr>
-<td>@Service</td>
-<td>用于标注业务层组件</td>
-</tr>
-<tr>
-<td>@Controller</td>
-<td>用于标注控制层组件</td>
-</tr>
-<tr>
-<td>@Repository</td>
-<td>用于标注数据访问组件，即DAO组件。</td>
-</tr>
-<tr>
-<td>@Value</td>
-<td>普通数据类型赋值</td>
-</tr>
-<tr>
-<td>@Autowired</td>
-<td>默认按类型装配，如果我们想按名称装配，可以结合@Qualifier注解一起使用</td>
-</tr>
-<tr>
-<td>@PropertySource</td>
-<td>读取配置文件赋值</td>
-</tr>
-<tr>
-<td>@Qualifier</td>
-<td>如存在多个实例配合使用</td>
-</tr>
-<tr>
-<td>@Primary</td>
-<td>自动装配时当出现了多个Bean候选者时，被注解为@Primary的Bean将作为首选者，否则将抛出异常</td>
-</tr>
-<tr>
-<td>@Resource</td>
-<td>默认按名称装配，当找不到与名称匹配的bean才会按类型装配</td>
-</tr>
-</tbody></table>
-<h2><span id="织入组件">织入组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ApplicationContextAware</td>
-<td>可以通过这个上下文环境对象得到Spring容器中的Bean</td>
-</tr>
-<tr>
-<td>BeanDefinitionRegistryPostProcessor</td>
-<td>BeanDefinitionRegistryPostProcessor实现了BeanFactoryPostProcessor接口，是Spring框架的BeanDefinitionRegistry的后外理器，用来注册额外的BeanDefinition</td>
-</tr>
-</tbody></table>
-<h2><span id="切面组件">切面组件</span></h2><table>
-<thead>
-<tr>
-<th>注解名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@EnableTransactionManagement</td>
-<td>添加对事务管理的支持</td>
-</tr>
-<tr>
-<td>@Ttranscational</td>
-<td>配置声明式事务信息</td>
-</tr>
-</tbody></table>
+                <h2><span id="什么是循环依懒">什么是循环依懒？</span></h2><p>循环依懒，即依懒形成了一个循环，如：</p>
+<ul>
+<li>A依懒B，B依懒A</li>
+<li>A依懒B，B依懒C，C依懒A</li>
+</ul>
+<h2><span id="spring-是如何解决的">Spring 是如何解决的</span></h2><p>spring 只能解决单例的，并且属性是非构造方法参数注入（set注入）的循环依懒。原理，就是运用缓存，如 getBean(“a”) 获取 A 的时候，先通过反射调用 A 的无参构造方法，创建 A 的 bean，并放入缓存容器。接着执行属性注入，发现 A 中有个 B 的引用属性，又会调用 getBean(“b”)获取 B 的bean，并放入缓存容器。接着执行属性注入，发现 B 中有个 A 的引用属性，又会调用 getBean(“a”)获取 A 的bean（此时形成循环）。这里有个很重要的点： getBean 的时候，都会先查询缓存容器，看是否已经创建过bean了，如果查询到了，就直接返回了。到这里，A 返回给了 B，B 又返回给 A，至此循环依懒完成了属性注入。</p>
+<p><img src="https://i.loli.net/2020/04/20/KhApxaJrq95sXnO.png" alt="Spring 循环依懒运行时序图.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -581,7 +470,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhao451966.github.io/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/">https://zhao451966.github.io/2020/04/13/spring5-zhu-jie-bian-cheng-ji-chu-zu-jian-jie-shao/</a>
+                    <a href="https://zhao451966.github.io/2020/04/20/spring-shi-ru-he-jie-jue-xun-huan-yi-lan-de/">https://zhao451966.github.io/2020/04/20/spring-shi-ru-he-jie-jue-xun-huan-yi-lan-de/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -792,52 +681,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/14/spring-jia-zai-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
+                <a href="/2020/04/21/untitled/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Spring加载XML配置到IOC容器方法调用时序">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Untitled">
                         
-                        <span class="card-title">Spring加载XML配置到IOC容器方法调用时序</span>
+                        <span class="card-title">Untitled</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spring 加载 XML 配置到IOC容器 方法调用时序：
-
-HttpServletBean.init()
-
-FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
+                            spring 拦截器调用advice以组合的形式，包含了一个advice
+而所有的链，是以拦截器的形式存在
+public java.lang.String com.jzhao.gper.demo.service.impl.QueryServ
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Spring/" class="post-category">
-                                    Spring
-                                </a>
-                            
-                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDXML%E9%85%8D%E7%BD%AE%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
-                                    Spring加载XML配置到IOC容器方法调用时序
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jzhao
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Spring/">
-                        <span class="chip bg-color">Spring</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -849,43 +720,36 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/08/spring-yuan-ma-xue-xi/">
+                <a href="/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Spring源码学习">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Spring加载AnnotationConfig到IOC容器方法调用时序">
                         
-                        <span class="card-title">Spring源码学习</span>
+                        <span class="card-title">Spring加载AnnotationConfig到IOC容器方法调用时序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            咕泡学院-Spring源码学习
+                            Spring加载 AnnotationConfig 到IOC容器方法调用时序：Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：
 
-
-Spring前世今生与Spring编程思想
-用300行代码手写初体验Spring+V1.0版本
-用30个类手写Spring+V2.0版本之顶层设计IOC与DI
-
-
-        document.que
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/" class="post-category">
-                                    咕泡学院
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
                                 </a>
                             
-                            <a href="/categories/%E5%92%95%E6%B3%A1%E5%AD%A6%E9%99%A2/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Spring源码学习
+                            <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDAnnotationConfig%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                    Spring加载AnnotationConfig到IOC容器方法调用时序
                                 </a>
                             
                             
@@ -895,8 +759,8 @@ Spring前世今生与Spring编程思想
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring%E6%BA%90%E7%A0%81/">
-                        <span class="chip bg-color">Spring源码</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>

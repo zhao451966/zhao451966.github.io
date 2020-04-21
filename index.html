@@ -329,7 +329,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/4.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
 </script>
 
 
@@ -397,7 +397,35 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/" class="waves-effect waves-light btn"
+                                <a href="/2020/04/14/spring-jia-zai-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/4.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Spring 是如何解决循环依懒的？</div>
+                            <div class="description center-align">
+                                
+                                    什么是循环依懒？循环依懒，即依懒形成了一个循环，如：
+
+A依懒B，B依懒A
+A依懒B，B依懒C，C依懒A
+
+Spring 是如何解决的spring 只能解决单例的，并且属性是非构造方法参数注入（set注入）的循环依懒。原理，就是运用缓存，如
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2020/04/20/spring-shi-ru-he-jie-jue-xun-huan-yi-lan-de/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -426,6 +454,30 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
                             </div>
                             <div class="cover-btns">
                                 <a href="/2020/04/07/jvm-sheng-hua-pian/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/15.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Spring加载AnnotationConfig到IOC容器方法调用时序</div>
+                            <div class="description center-align">
+                                
+                                    Spring加载 AnnotationConfig 到IOC容器方法调用时序：Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：
+
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -589,7 +641,152 @@ FrameworkServlet.initServletBean() –&gt; initWebApplicationConte
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2020/04/14/spring-jia-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
+                    <a href="/2020/04/21/untitled/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Untitled">
+                            
+                            <span class="card-title">Untitled</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                spring 拦截器调用advice以组合的形式，包含了一个advice
+而所有的链，是以拦截器的形式存在
+public java.lang.String com.jzhao.gper.demo.service.impl.QueryServ
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                jzhao
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/20/spring-shi-ru-he-jie-jue-xun-huan-yi-lan-de/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Spring 是如何解决循环依懒的？">
+                            
+                            <span class="card-title">Spring 是如何解决循环依懒的？</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                什么是循环依懒？循环依懒，即依懒形成了一个循环，如：
+
+A依懒B，B依懒A
+A依懒B，B依懒C，C依懒A
+
+Spring 是如何解决的spring 只能解决单例的，并且属性是非构造方法参数注入（set注入）的循环依懒。原理，就是运用缓存，如
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-20
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                                
+                                <a href="/categories/Spring/Spring-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E6%87%92%E7%9A%84%EF%BC%9F/" class="post-category">
+                                    Spring 是如何解决循环依懒的？
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Spring/">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Spring加载AnnotationConfig到IOC容器方法调用时序">
+                            
+                            <span class="card-title">Spring加载AnnotationConfig到IOC容器方法调用时序</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Spring加载 AnnotationConfig 到IOC容器方法调用时序：Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                                
+                                <a href="/categories/Spring/Spring%E5%8A%A0%E8%BD%BDAnnotationConfig%E5%88%B0IOC%E5%AE%B9%E5%99%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E5%BA%8F/" class="post-category">
+                                    Spring加载AnnotationConfig到IOC容器方法调用时序
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Spring/">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/14/spring-jia-zai-xml-pei-zhi-dao-ioc-rong-qi-fang-fa-diao-yong-shi-xu/">
                         <div class="card-image">
                             
                             

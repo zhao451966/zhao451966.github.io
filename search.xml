@@ -4,13 +4,31 @@
   
     
     <entry>
-      <title>Untitled</title>
-      <link href="/2020/04/22/untitled/"/>
-      <url>/2020/04/22/untitled/</url>
+      <title>设计模式脑图</title>
+      <link href="/2020/04/22/she-ji-mo-shi-nao-tu/"/>
+      <url>/2020/04/22/she-ji-mo-shi-nao-tu/</url>
       
-        <content type="html"><![CDATA[<p>5872903shu7258</p><p>95xiang7258</p><p>Cookie: JSESSIONID=8D0D53643A75EC163616DECFD0BD9850.jvm1; zg_did=%7B%22did%22%3A%20%221719f5ac899a3-0d9eb48e522561-4c302e7f-100200-1719f5ac89a50%22%7D; zg_3f37ba50e54f4374b9af5be6d12b208f=%7B%22sid%22%3A%201587516459171%2C%22updated%22%3A%201587516980417%2C%22info%22%3A%201587516459194%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22%22%2C%22cuid%22%3A%20%225e9ebfe86376897466845442%22%7D; _ga=GA1.2.750087247.1587516463; _gid=GA1.2.1646631769.1587516463; processon_userKey=5e9ebfe86376897466845442; _sid=a5f1dc7713b49e2fa6cae9222a7cc242</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2><span id="设计模式脑图">设计模式脑图</span></h2><p>脑图中包含以下内容：</p><ul><li>七大设计原则</li><li>23种设计模式</li><li>设计模式分类</li><li>设计模式关联对比</li></ul><iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;" width="100%" height="500" allowfullscreen="true" src="https://www.processon.com/view/link/5e9ff4067d9c0869da9c309e"></iframe><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+          <category> 脑图 </category>
+          
+          <category> 设计模式脑图 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+            <tag> 脑图 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -21,7 +39,7 @@
       <link href="/2020/04/21/spring-nao-tu/"/>
       <url>/2020/04/21/spring-nao-tu/</url>
       
-        <content type="html"><![CDATA[<h2><span id="spring-知识点脑图">Spring   知识点脑图</span></h2><blockquote><p>spring框架知识点，大概包含以下内容</p></blockquote><ul><li>IOC</li><li>DI</li><li>AOP</li><li>MVC</li></ul><iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;" width="100%" height="400" allowfullscreen="true" src="https://www.processon.com/view/link/5e9ea8ad1e085346f711bcb6"></iframe><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2><span id="spring-知识点脑图">Spring   知识点脑图</span></h2><blockquote><p>spring框架知识点，大概包含以下内容</p></blockquote><ul><li>IOC</li><li>DI</li><li>AOP</li><li>MVC</li></ul><iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;" width="100%" height="500" allowfullscreen="true" src="https://www.processon.com/view/link/5e9ea8ad1e085346f711bcb6"></iframe><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -39,7 +57,7 @@
             
             <tag> Spring </tag>
             
-            <tag> Spring 脑图 </tag>
+            <tag> 脑图 </tag>
             
         </tags>
       
@@ -183,6 +201,33 @@
     
     
     <entry>
+      <title>设计模式学习</title>
+      <link href="/2020/04/07/she-ji-mo-shi-xue-xi/"/>
+      <url>/2020/04/07/she-ji-mo-shi-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<h2><span id="咕泡学院-设计模式学习">咕泡学院-设计模式学习</span></h2><a id="more"></a><ul><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/01_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88%E5%8F%8A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">设计模式总览及工厂模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/02_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">单例模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/03_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">原型模式与建造者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/04_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.pdf" target="_blank" rel="noopener">深度分析代理模式</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/05_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">门面模式与装饰器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/06_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">享元模式与组合模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/07_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">适配器模式与桥接模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/08_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">委派模式与模板方法模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/09_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">策略模式与责任链模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/10_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">迭代器模式与命令模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/11_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">状态模式与备忘录模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/12_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">中介者模式与解释器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/13_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">观察者模式与访问者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/14_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AF%B9%E6%AF%94.pdf" target="_blank" rel="noopener">各设计模式总结与对比</a></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 咕泡学院 </category>
+          
+          <category> 设计模式学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM升华篇</title>
       <link href="/2020/04/07/jvm-sheng-hua-pian/"/>
       <url>/2020/04/07/jvm-sheng-hua-pian/</url>
@@ -204,33 +249,6 @@
             <tag> JVM </tag>
             
             <tag> Garbage Collect(垃圾回收) </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>设计模式学习</title>
-      <link href="/2020/04/07/she-ji-mo-shi-xue-xi/"/>
-      <url>/2020/04/07/she-ji-mo-shi-xue-xi/</url>
-      
-        <content type="html"><![CDATA[<h2><span id="咕泡学院-设计模式学习">咕泡学院-设计模式学习</span></h2><a id="more"></a><ul><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/01_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E8%A7%88%E5%8F%8A%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">设计模式总览及工厂模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/02_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">单例模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/03_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">原型模式与建造者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/04_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.pdf" target="_blank" rel="noopener">深度分析代理模式</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/05_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">门面模式与装饰器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/06_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">享元模式与组合模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/07_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">适配器模式与桥接模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/08_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%BC%8F%E4%B8%8E%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">委派模式与模板方法模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/09_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">策略模式与责任链模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/10_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">迭代器模式与命令模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/11_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">状态模式与备忘录模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/12_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">中介者模式与解释器模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/13_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.pdf" target="_blank" rel="noopener">观察者模式与访问者模式详解</a></li><li><a href="https://gitee.com/zhao451966/blog/raw/hexo/pdf/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/14_%E3%80%90%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%E3%80%91%E5%90%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AF%B9%E6%AF%94.pdf" target="_blank" rel="noopener">各设计模式总结与对比</a></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> 咕泡学院 </category>
-          
-          <category> 设计模式学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 设计模式 </tag>
             
         </tags>
       

@@ -329,7 +329,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/3.jpg)');
 </script>
 
 
@@ -379,6 +379,58 @@
     
         
 
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/9.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">JVM升华篇</div>
+                            <div class="description center-align">
+                                
+                                    Garbage Collect(垃圾回收)
+
+何为垃圾：如何确定一个对象是垃圾？
+引用计数法：
+对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。
+弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2020/04/07/jvm-sheng-hua-pian/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/15.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Spring加载AnnotationConfig到IOC容器方法调用时序</div>
+                            <div class="description center-align">
+                                
+                                    Spring加载 AnnotationConfig 到IOC容器方法调用时序：Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：
+
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
@@ -437,47 +489,30 @@ Spring 是如何解决的spring 只能解决单例的，并且属性是非构造
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/9.jpg');">
+                 style="background-image: url('/medias/featureimages/22.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">JVM升华篇</div>
+                            <div class="title center-align">Spring脑图</div>
                             <div class="description center-align">
                                 
-                                    Garbage Collect(垃圾回收)
+                                    Spring   知识点脑图
+spring框架知识点，大概包含以下内容
 
-何为垃圾：如何确定一个对象是垃圾？
-引用计数法：
-对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。
-弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A
+
+IOC
+DI
+AOP
+MVC
+
+
+
+        document.querySelectorAll('.github-emoji')
+          .fo
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/2020/04/07/jvm-sheng-hua-pian/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/15.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">Spring加载AnnotationConfig到IOC容器方法调用时序</div>
-                            <div class="description center-align">
-                                
-                                    Spring加载 AnnotationConfig 到IOC容器方法调用时序：Spring 4 之后是可以通过配置类来装载 bean 的，只要类上面加了 @Configuration ，即可以将这个类里面定义的bean 等来进行装载，如：
-
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/2020/04/17/spring-jia-zai-annotation-dao-ioc-rong-qi/" class="waves-effect waves-light btn"
+                                <a href="/2020/04/21/spring-nao-tu/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -641,7 +676,7 @@ Spring 是如何解决的spring 只能解决单例的，并且属性是非构造
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2020/04/21/untitled/">
+                    <a href="/2020/04/22/untitled/">
                         <div class="card-image">
                             
                             
@@ -654,14 +689,14 @@ Spring 是如何解决的spring 只能解决单例的，并且属性是非构造
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                spring 拦截器调用advice以组合的形式，包含了一个advice
-而所有的链，是以拦截器的形式存在
-public java.lang.String com.jzhao.gper.demo.service.impl.QueryServ
+                                5872903shu7258
+95xiang7258
+Cookie: JSESSIONID=8D0D53643A75EC163616DECFD0BD9850.jvm1; zg_did=%7B%22did%22%3A%20%221719f5a
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-22
                             </span>
                             <span class="publish-author">
                                 
@@ -672,6 +707,77 @@ public java.lang.String com.jzhao.gper.demo.service.impl.QueryServ
                         </div>
                     </div>
 
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/21/spring-nao-tu/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Spring脑图">
+                            
+                            <span class="card-title">Spring脑图</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Spring   知识点脑图
+spring框架知识点，大概包含以下内容
+
+
+IOC
+DI
+AOP
+MVC
+
+
+
+        document.querySelectorAll('.github-emoji')
+          .fo
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                                
+                                <a href="/categories/Spring/%E8%84%91%E5%9B%BE/" class="post-category">
+                                    脑图
+                                </a>
+                                
+                                <a href="/categories/Spring/%E8%84%91%E5%9B%BE/Spring-%E8%84%91%E5%9B%BE/" class="post-category">
+                                    Spring 脑图
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Spring/">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                        <a href="/tags/Spring-%E8%84%91%E5%9B%BE/">
+                            <span class="chip bg-color">Spring 脑图</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -966,6 +1072,66 @@ Spring前世今生与Spring编程思想
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2020/04/07/jvm-sheng-hua-pian/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JVM升华篇">
+                            
+                            <span class="card-title">JVM升华篇</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Garbage Collect(垃圾回收)
+
+何为垃圾：如何确定一个对象是垃圾？
+引用计数法：
+对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。
+弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
+                                </a>
+                                
+                                <a href="/categories/JVM/JVM%E5%8D%87%E5%8D%8E%E7%AF%87/" class="post-category">
+                                    JVM升华篇
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM/">
+                            <span class="chip bg-color">JVM</span>
+                        </a>
+                        
+                        <a href="/tags/Garbage-Collect-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
+                            <span class="chip bg-color">Garbage Collect(垃圾回收)</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2020/04/07/she-ji-mo-shi-xue-xi/">
                         <div class="card-image">
                             
@@ -1019,66 +1185,6 @@ Spring前世今生与Spring编程思想
                         
                         <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
                             <span class="chip bg-color">设计模式</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/04/07/jvm-sheng-hua-pian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="JVM升华篇">
-                            
-                            <span class="card-title">JVM升华篇</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Garbage Collect(垃圾回收)
-
-何为垃圾：如何确定一个对象是垃圾？
-引用计数法：
-对于对象而言，如果程序中没有任何对象引用它，它就是垃圾。
-弊端：会存在循环引用，A引用B，B又引用A。而如果此时，A,B都没有被其他对象引用，A
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/JVM/" class="post-category">
-                                    JVM
-                                </a>
-                                
-                                <a href="/categories/JVM/JVM%E5%8D%87%E5%8D%8E%E7%AF%87/" class="post-category">
-                                    JVM升华篇
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JVM/">
-                            <span class="chip bg-color">JVM</span>
-                        </a>
-                        
-                        <a href="/tags/Garbage-Collect-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-                            <span class="chip bg-color">Garbage Collect(垃圾回收)</span>
                         </a>
                         
                     </div>

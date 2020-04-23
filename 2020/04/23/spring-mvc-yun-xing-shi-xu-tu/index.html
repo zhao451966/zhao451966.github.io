@@ -1,0 +1,1124 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring,Spring MVC运行时序图">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Spring MVC运行时序图 | 飞天辰良</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">飞天辰良</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">飞天辰良</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Spring MVC运行时序图</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
+                            </a>
+                        
+                            <a href="/categories/Spring/Spring-MVC%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE/" class="post-category">
+                                Spring MVC运行时序图
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-23
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1><span id="spring-mvc运行时序图">Spring MVC运行时序图</span></h1><p>Spring mvc运行，可以分为以下几个步骤：</p>
+<ul>
+<li>请求被映射到 HandlerMapping</li>
+<li>HandlerMapping 通过 HandlerAdapter 动态处理参数，并返回 ModelAndView</li>
+<li>ModelAndView 经过 ViewResolver 返回 View</li>
+</ul>
+<h3><span id="运行时序图">运行时序图</span></h3><p><img src="https://i.loli.net/2020/04/23/rgqt6XP2YBSduse.png" alt="Spring MVC运行时序图.png"></p>
+<h2><span id="源码运行分析">源码运行分析</span></h2><h3><span id="初始化阶段">初始化阶段</span></h3><h4><span id="1-httpservletbeaninit">1、HttpServletBean.init()</span></h4><p> init() 是 Servlet 的初始化入口。主要完成读取配置文件，然后调用了一个自己定义模板方法 initServletBean ,通过子类来完成ServletBean  初始化。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">90</span><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>{</span><br><span class="line">   <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">      logger.debug(<span class="string">"Initializing servlet '"</span> + getServletName() + <span class="string">"'"</span>);</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Set bean properties from init parameters.</span></span><br><span class="line">   PropertyValues pvs = <span class="keyword">new</span> ServletConfigPropertyValues(getServletConfig(), <span class="keyword">this</span>.requiredProperties);</span><br><span class="line">   <span class="keyword">if</span> (!pvs.isEmpty()) {</span><br><span class="line">      <span class="keyword">try</span> {</span><br><span class="line">         <span class="comment">//定位资源</span></span><br><span class="line">         BeanWrapper bw = PropertyAccessorFactory.forBeanPropertyAccess(<span class="keyword">this</span>);</span><br><span class="line">         <span class="comment">//加载配置信息</span></span><br><span class="line">         ResourceLoader resourceLoader = <span class="keyword">new</span> ServletContextResourceLoader(getServletContext());</span><br><span class="line">         bw.registerCustomEditor(Resource<span class="class">.<span class="keyword">class</span>, <span class="title">new</span> <span class="title">ResourceEditor</span>(<span class="title">resourceLoader</span>, <span class="title">getEnvironment</span>()))</span>;</span><br><span class="line">         initBeanWrapper(bw);</span><br><span class="line">         bw.setPropertyValues(pvs, <span class="keyword">true</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">catch</span> (BeansException ex) {</span><br><span class="line">         <span class="keyword">if</span> (logger.isErrorEnabled()) {</span><br><span class="line">            logger.error(<span class="string">"Failed to set bean properties on servlet '"</span> + getServletName() + <span class="string">"'"</span>, ex);</span><br><span class="line">         }</span><br><span class="line">         <span class="keyword">throw</span> ex;</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Let subclasses do whatever initialization they like.</span></span><br><span class="line">   initServletBean();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">      logger.debug(<span class="string">"Servlet '"</span> + getServletName() + <span class="string">"' configured successfully"</span>);</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4><span id="2-frameworkservletinitservletbean">2、FrameworkServlet.initServletBean()</span></h4><p>重写父类的initServletBean()方法，用来创建 WebApplicationContext  对象：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> {</span><br><span class="line">   <span class="comment">//直接委派调用：initWebApplicationContext</span></span><br><span class="line">   <span class="keyword">this</span>.webApplicationContext = initWebApplicationContext();</span><br><span class="line">   initFrameworkServlet();</span><br><span class="line">}</span><br><span class="line"><span class="keyword">catch</span> (ServletException ex) {</span><br><span class="line">   <span class="keyword">this</span>.logger.error(<span class="string">"Context initialization failed"</span>, ex);</span><br><span class="line">   <span class="keyword">throw</span> ex;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">catch</span> (RuntimeException ex) {</span><br><span class="line">   <span class="keyword">this</span>.logger.error(<span class="string">"Context initialization failed"</span>, ex);</span><br><span class="line">   <span class="keyword">throw</span> ex;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>initWebApplicationContext</li>
+</ul>
+<p>在 FrameworkServlet.initWebApplicationContext 方法中，完成了IOC容器（WebApplicationContext  ）的创建，但和MVC相关的，是 onRefresh 方法</p>
+<h4><span id="3-dispatcherservletonrefresh">3、DispatcherServlet.onRefresh</span></h4><p>FrameworkServlet定义了一个空的模板方法onRefresh，让子类进行覆盖。而 DispatcherServlet 的 onRefresh 方法就是调用了 initStrategies ， 来初始化 MVC 九大组件：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化策略</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">initStrategies</span><span class="params">(ApplicationContext context)</span> </span>{</span><br><span class="line">   <span class="comment">//多文件上传的组件</span></span><br><span class="line">   initMultipartResolver(context);</span><br><span class="line">   <span class="comment">//初始化本地语言环境</span></span><br><span class="line">   initLocaleResolver(context);</span><br><span class="line">   <span class="comment">//初始化模板处理器</span></span><br><span class="line">   initThemeResolver(context);</span><br><span class="line">   <span class="comment">//handlerMapping</span></span><br><span class="line">   initHandlerMappings(context);</span><br><span class="line">   <span class="comment">//初始化参数适配器</span></span><br><span class="line">   initHandlerAdapters(context);</span><br><span class="line">   <span class="comment">//初始化异常拦截器</span></span><br><span class="line">   initHandlerExceptionResolvers(context);</span><br><span class="line">   <span class="comment">//初始化视图预处理器</span></span><br><span class="line">   initRequestToViewNameTranslator(context);</span><br><span class="line">   <span class="comment">//初始化视图转换器</span></span><br><span class="line">   initViewResolvers(context);</span><br><span class="line">   <span class="comment">//初始化参数缓存器</span></span><br><span class="line">   initFlashMapManager(context);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2><span id="调用阶段">调用阶段</span></h2><h4><span id="1-dispatcherservletdoservice">1、DispatcherServlet.doService</span></h4><p>Servlet 调用方法的入口：doService </p>
+<blockquote>
+<p>公开DispatcherServlet的特定要求的属性和委托给doDispatch的实际调度</p>
+</blockquote>
+<ul>
+<li>doDispatch 中央控制器,控制请求的转发<ol>
+<li>检查是否是文件上传的请求</li>
+<li>取得处理当前请求的controller，这里也称为hanlder，处理器,第一个步骤的意义就在这里体现了。这里并不是直接返回controller，而是返回的 HandlerExecutionChain 请求处理器链对象，该对象封装了handler和interceptors。</li>
+<li>获取处理request的处理器适配器handler adapter</li>
+<li>实际的处理器处理请求,返回结果视图对象</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">/** 中央控制器,控制请求的转发 **/</span><br><span class="line">protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {</span><br><span class="line">   HttpServletRequest processedRequest = request;</span><br><span class="line">   HandlerExecutionChain mappedHandler = null;</span><br><span class="line">   boolean multipartRequestParsed = false;</span><br><span class="line"></span><br><span class="line">   WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);</span><br><span class="line"></span><br><span class="line">   try {</span><br><span class="line">      ModelAndView mv = null;</span><br><span class="line">      Exception dispatchException = null;</span><br><span class="line"></span><br><span class="line">      try {</span><br><span class="line">         // 1.检查是否是文件上传的请求</span><br><span class="line">         processedRequest = checkMultipart(request);</span><br><span class="line">         multipartRequestParsed = (processedRequest != request);</span><br><span class="line"></span><br><span class="line">         // Determine handler for the current request.</span><br><span class="line">         // 2.取得处理当前请求的controller,这里也称为hanlder,处理器,</span><br><span class="line">         //      第一个步骤的意义就在这里体现了.这里并不是直接返回controller,</span><br><span class="line">         //  而是返回的HandlerExecutionChain请求处理器链对象,</span><br><span class="line">         //  该对象封装了handler和interceptors.</span><br><span class="line">         mappedHandler = getHandler(processedRequest);</span><br><span class="line">         // 如果handler为空,则返回404</span><br><span class="line">         if (mappedHandler == null) {</span><br><span class="line">            noHandlerFound(processedRequest, response);</span><br><span class="line">            return;</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         // Determine handler adapter for the current request.</span><br><span class="line">         //3. 获取处理request的处理器适配器handler adapter</span><br><span class="line">         HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());</span><br><span class="line"></span><br><span class="line">         // Process last-modified header, if supported by the handler.</span><br><span class="line">         // 处理 last-modified 请求头</span><br><span class="line">         String method = request.getMethod();</span><br><span class="line">         boolean isGet = "GET".equals(method);</span><br><span class="line">         if (isGet || "HEAD".equals(method)) {</span><br><span class="line">            long lastModified = ha.getLastModified(request, mappedHandler.getHandler());</span><br><span class="line">            if (logger.isDebugEnabled()) {</span><br><span class="line">               logger.debug("Last-Modified value for [" + getRequestUri(request) + "] is: " + lastModified);</span><br><span class="line">            }</span><br><span class="line">            if (new ServletWebRequest(request, response).checkNotModified(lastModified) &amp;&amp; isGet) {</span><br><span class="line">               return;</span><br><span class="line">            }</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         if (!mappedHandler.applyPreHandle(processedRequest, response)) {</span><br><span class="line">            return;</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         // Actually invoke the handler.</span><br><span class="line">         // 4.实际的处理器处理请求,返回结果视图对象</span><br><span class="line">         mv = ha.handle(processedRequest, response, mappedHandler.getHandler());</span><br><span class="line"></span><br><span class="line">         if (asyncManager.isConcurrentHandlingStarted()) {</span><br><span class="line">            return;</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         // 结果视图对象的处理</span><br><span class="line">         applyDefaultViewName(processedRequest, mv);</span><br><span class="line">         mappedHandler.applyPostHandle(processedRequest, response, mv);</span><br><span class="line">      }</span><br><span class="line">      catch (Exception ex) {</span><br><span class="line">         dispatchException = ex;</span><br><span class="line">      }</span><br><span class="line">      catch (Throwable err) {</span><br><span class="line">         // As of 4.3, we're processing Errors thrown from handler methods as well,</span><br><span class="line">         // making them available for @ExceptionHandler methods and other scenarios.</span><br><span class="line">         dispatchException = new NestedServletException("Handler dispatch failed", err);</span><br><span class="line">      }</span><br><span class="line">      processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</span><br><span class="line">   }</span><br><span class="line">   catch (Exception ex) {</span><br><span class="line">      triggerAfterCompletion(processedRequest, response, mappedHandler, ex);</span><br><span class="line">   }</span><br><span class="line">   catch (Throwable err) {</span><br><span class="line">      triggerAfterCompletion(processedRequest, response, mappedHandler,</span><br><span class="line">            new NestedServletException("Handler processing failed", err));</span><br><span class="line">   }</span><br><span class="line">   finally {</span><br><span class="line">      if (asyncManager.isConcurrentHandlingStarted()) {</span><br><span class="line">         // Instead of postHandle and afterCompletion</span><br><span class="line">         if (mappedHandler != null) {</span><br><span class="line">            // 请求成功响应之后的方法</span><br><span class="line">            mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);</span><br><span class="line">         }</span><br><span class="line">      }</span><br><span class="line">      else {</span><br><span class="line">         // Clean up any resources used by a multipart request.</span><br><span class="line">         if (multipartRequestParsed) {</span><br><span class="line">            cleanupMultipart(processedRequest);</span><br><span class="line">         }</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>processDispatchResult</li>
+</ul>
+<p>处理分发结果。将 ModelAndView 或 Exception 统一解析为一个 ModelAndView ，然后调用 redener 完成渲染。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">processDispatchResult</span><span class="params">(HttpServletRequest request, HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">      @Nullable HandlerExecutionChain mappedHandler, @Nullable ModelAndView mv,</span></span></span><br><span class="line"><span class="function"><span class="params">      @Nullable Exception exception)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line"></span><br><span class="line">   <span class="keyword">boolean</span> errorView = <span class="keyword">false</span>;</span><br><span class="line">   <span class="comment">//将Exception 也处理为一个ModelAndView </span></span><br><span class="line">   <span class="keyword">if</span> (exception != <span class="keyword">null</span>) {</span><br><span class="line">      <span class="keyword">if</span> (exception <span class="keyword">instanceof</span> ModelAndViewDefiningException) {</span><br><span class="line">         logger.debug(<span class="string">"ModelAndViewDefiningException encountered"</span>, exception);</span><br><span class="line">         mv = ((ModelAndViewDefiningException) exception).getModelAndView();</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span> {</span><br><span class="line">         Object handler = (mappedHandler != <span class="keyword">null</span> ? mappedHandler.getHandler() : <span class="keyword">null</span>);</span><br><span class="line">         mv = processHandlerException(request, response, handler, exception);</span><br><span class="line">         errorView = (mv != <span class="keyword">null</span>);</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Did the handler return a view to render?</span></span><br><span class="line">   <span class="keyword">if</span> (mv != <span class="keyword">null</span> &amp;&amp; !mv.wasCleared()) {</span><br><span class="line">      <span class="comment">//调用渲染方法，渲染 ModelAndView</span></span><br><span class="line">      render(mv, request, response);</span><br><span class="line">      <span class="keyword">if</span> (errorView) {</span><br><span class="line">         WebUtils.clearErrorRequestAttributes(request);</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">else</span> {</span><br><span class="line">      <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">         logger.debug(<span class="string">"Null ModelAndView returned to DispatcherServlet with name '"</span> + getServletName() +</span><br><span class="line">               <span class="string">"': assuming HandlerAdapter completed request handling"</span>);</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) {</span><br><span class="line">      <span class="comment">// Concurrent handling started during a forward</span></span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (mappedHandler != <span class="keyword">null</span>) {</span><br><span class="line">      mappedHandler.triggerAfterCompletion(request, response, <span class="keyword">null</span>);</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><p>render</p>
+<p>渲染给定的ModelAndView：</p>
+<ol>
+<li>从 ModelAndView 取出 View</li>
+<li>调用 View 的 render 方法，进行视图渲染</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">render</span><span class="params">(ModelAndView mv, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line">   <span class="comment">// Determine locale for request and apply it to the response.</span></span><br><span class="line">   Locale locale =</span><br><span class="line">         (<span class="keyword">this</span>.localeResolver != <span class="keyword">null</span> ? <span class="keyword">this</span>.localeResolver.resolveLocale(request) : request.getLocale());</span><br><span class="line">   response.setLocale(locale);</span><br><span class="line"></span><br><span class="line">   View view;</span><br><span class="line">   String viewName = mv.getViewName();</span><br><span class="line">   <span class="keyword">if</span> (viewName != <span class="keyword">null</span>) {</span><br><span class="line">      <span class="comment">// We need to resolve the view name.</span></span><br><span class="line">      view = resolveViewName(viewName, mv.getModelInternal(), locale, request);</span><br><span class="line">      <span class="keyword">if</span> (view == <span class="keyword">null</span>) {</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(<span class="string">"Could not resolve view with name '"</span> + mv.getViewName() +</span><br><span class="line">               <span class="string">"' in servlet with name '"</span> + getServletName() + <span class="string">"'"</span>);</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">else</span> {</span><br><span class="line">      <span class="comment">// No need to lookup: the ModelAndView object contains the actual View object.</span></span><br><span class="line">      <span class="comment">//1、从 ModelAndView 直接取出 View</span></span><br><span class="line">      view = mv.getView();</span><br><span class="line">      <span class="keyword">if</span> (view == <span class="keyword">null</span>) {</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(<span class="string">"ModelAndView ["</span> + mv + <span class="string">"] neither contains a view name nor a "</span> +</span><br><span class="line">               <span class="string">"View object in servlet with name '"</span> + getServletName() + <span class="string">"'"</span>);</span><br><span class="line">      }</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Delegate to the View object for rendering.</span></span><br><span class="line">   <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">      logger.debug(<span class="string">"Rendering view ["</span> + view + <span class="string">"] in DispatcherServlet with name '"</span> + getServletName() + <span class="string">"'"</span>);</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">try</span> {</span><br><span class="line">      <span class="keyword">if</span> (mv.getStatus() != <span class="keyword">null</span>) {</span><br><span class="line">         response.setStatus(mv.getStatus().value());</span><br><span class="line">      }</span><br><span class="line">      <span class="comment">//2、调用 View 的 render 方法，进行视图渲染</span></span><br><span class="line">      view.render(mv.getModelInternal(), request, response);</span><br><span class="line">   }</span><br><span class="line">   <span class="keyword">catch</span> (Exception ex) {</span><br><span class="line">      <span class="keyword">if</span> (logger.isDebugEnabled()) {</span><br><span class="line">         logger.debug(<span class="string">"Error rendering view ["</span> + view + <span class="string">"] in DispatcherServlet with name '"</span> +</span><br><span class="line">               getServletName() + <span class="string">"'"</span>, ex);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">throw</span> ex;</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4><span id="2-abstractviewrender">2、AbstractView.render</span></h4><p> 这个方法里主要就是将一些 staticAttributes、requestContextAttribute 合并到 model中</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">render</span><span class="params">(@Nullable Map&lt;String, ?&gt; model, HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">      HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (logger.isTraceEnabled()) {</span><br><span class="line">      logger.trace(<span class="string">"Rendering view with name '"</span> + <span class="keyword">this</span>.beanName + <span class="string">"' with model "</span> + model +</span><br><span class="line">         <span class="string">" and static attributes "</span> + <span class="keyword">this</span>.staticAttributes);</span><br><span class="line">   }</span><br><span class="line">   <span class="comment">// 合并属性到model</span></span><br><span class="line">   Map&lt;String, Object&gt; mergedModel = createMergedOutputModel(model, request, response);</span><br><span class="line">   prepareResponse(request, response);</span><br><span class="line">   <span class="comment">//最后将合并的model进行渲染输出</span></span><br><span class="line">   renderMergedOutputModel(mergedModel, getRequestToExpose(request), response);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>此至，MVC 调用完成。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhao451966.github.io" rel="external nofollow noreferrer">jzhao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhao451966.github.io/2020/04/23/spring-mvc-yun-xing-shi-xu-tu/">https://zhao451966.github.io/2020/04/23/spring-mvc-yun-xing-shi-xu-tu/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://zhao451966.github.io" target="_blank">jzhao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/04/23/spring-mvc-yun-xing-shi-xu-tu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Spring MVC运行时序图">
+                        
+                        <span class="card-title">Spring MVC运行时序图</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Spring MVC运行时序图Spring mvc运行，可以分为以下几个步骤：
+
+请求被映射到 HandlerMapping
+HandlerMapping 通过 HandlerAdapter 动态处理参数，并返回 ModelAndView
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            <a href="/categories/Spring/Spring-MVC%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE/" class="post-category">
+                                    Spring MVC运行时序图
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/22/she-ji-mo-shi-nao-tu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="设计模式脑图">
+                        
+                        <span class="card-title">设计模式脑图</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            设计模式脑图脑图中包含以下内容：
+
+七大设计原则
+23种设计模式
+设计模式分类
+设计模式关联对比
+
+
+        document.querySelectorAll('.github-emoji')
+          .forEach
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%84%91%E5%9B%BE/" class="post-category">
+                                    脑图
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%84%91%E5%9B%BE/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%84%91%E5%9B%BE/" class="post-category">
+                                    设计模式脑图
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%84%91%E5%9B%BE/">
+                        <span class="chip bg-color">脑图</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://zhao451966.github.io" target="_blank">jzhao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhao451966" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:451966221@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=451966221" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 451966221" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
